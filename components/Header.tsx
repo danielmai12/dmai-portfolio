@@ -2,10 +2,11 @@ import Link from "next/link";
 
 import { Button } from "./ui/button";
 import Navigation from "./Navigation";
+import MobileNavigation from "./MobileNavigation";
 
 const Header = () => {
   return (
-    <header className="py-8 xl:py-12 text-white bg-pink-50/20">
+    <header className="py-8 xl:py-12 text-white">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/">
           <h1 className="text-4xl font-semibold">
@@ -22,7 +23,9 @@ const Header = () => {
         </div>
 
         {/* Mobile navigation */}
-        <div className="xl:hidden">mobile nav</div>
+        <div className="xl:hidden">
+          <MobileNavigation />
+        </div>
       </div>
     </header>
   );

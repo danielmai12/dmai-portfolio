@@ -2,27 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { pageLinks } from "@/lib/utils";
 
-const links = [
-  { name: "home", href: "/" },
-  { name: "resume", href: "/resume" },
-  { name: "projects", href: "/projects" },
-  { name: "work", href: "/work" },
-  { name: "contact", href: "/contact" },
-  { name: "blog", href: "/blog" },
-];
 const Navigation = () => {
   const pathName = usePathname();
 
   return (
     <nav className="flex gap-8">
-      {links.map((link, index) => (
+      {pageLinks.map((link, index) => (
         <Link
           href={link.href}
           key={index}
           className={`${
             link.href === pathName && "text-accent border-b-2 border-accent"
-          }`}
+          } capitalize font-medium hover:text-accent transition-all`}
         >
           {link.name}
         </Link>
