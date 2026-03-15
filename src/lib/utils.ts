@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export const pageLinks = [
   { name: "home", href: "/" },
   { name: "projects", href: "/projects" },
-  { name: "work", href: "/work" },
+  { name: "experience", href: "/experience" },
   { name: "contact", href: "/contact" },
   { name: "blog", href: "/blog" },
 ];
