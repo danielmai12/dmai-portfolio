@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 const projects = [
   {
     name: "CGC Grain Outcome Predictions",
-    period: "May 2023 – Aug 2023",
+    period: "May 2023 - Aug 2023",
     description:
-      "Collaborated in a team of 6 to build ML models predicting the incidence and severity of Ergot. Created a Python pipeline to scrape weather data from ground station and satellite sources, stored in dockerized PostgreSQL containers. Held biweekly meetings with stakeholders from the Government and University of Manitoba.",
+      "Collaborated in a team of 6 to build ML models predicting the incidence and severity of Ergot. Created a Python pipeline to scrape weather data from ground station and satellite sources, stored in dockerized PostgreSQL containers",
     tech: ["Python", "Docker", "PostgreSQL", "TensorFlow"],
     github: "https://github.com/dmai/CGC_Grain_Outcome_Predictions",
   },

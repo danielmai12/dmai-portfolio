@@ -25,8 +25,8 @@ const config: Config = {
       colors: {
         primary: "var(--bg-color)",
         accent: {
-          DEFAULT: "#8b2500",
-          hover: "#701e00",
+          DEFAULT: "var(--accent-color)",
+          hover: "var(--accent-color)",
         },
       },
       keyframes: {
