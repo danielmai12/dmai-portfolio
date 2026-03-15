@@ -1,14 +1,13 @@
 import Photo from "@/components/Photo";
 import Social from "@/components/Social";
 import { Button } from "@/components/ui/button";
-import { FiDownload } from "react-icons/fi";
 
 const Home = () => {
   return (
     <section className="min-h-[calc(100vh-4rem)] flex items-center">
       <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row items-center justify-between gap-12">
-          <div className="text-center order-2 xl:order-none">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-6 xl:gap-12 pt-6 xl:pt-0">
+          <div className="text-left order-2 xl:order-none">
             <span
               className="text-xl font-medium"
               style={{ color: "var(--secondary-color)" }}
@@ -19,15 +18,42 @@ const Home = () => {
               Hello I&apos;m <br />
               <span style={{ color: "var(--accent-color)" }}>Daniel Mai</span>
             </h1>
-            <p
-              className="max-w-[500px] mb-9"
+            <div
+              className="max-w-[500px] mb-9 flex flex-col gap-3 leading-relaxed text-sm"
               style={{ color: "var(--text-color)" }}
             >
-              I am a software engineer with a passion for building web
-              applications. I have experience in various technologies and
-              frameworks, and I love to learn new things.
-            </p>
-            <div className="flex flex-col xl:flex-row items-center justify-center gap-8">
+              <p>
+                Currently at{" "}
+                <a
+                  href="https://parkwithgryd.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                  style={{ color: "var(--accent-color)" }}
+                >
+                  GrydPark
+                </a>
+                , building full-stack B2B/B2C parking services across web and
+                mobile. I work across the whole stack — from React frontends to
+                NestJS APIs and PostgreSQL — with a deeper focus on backend
+                systems and cloud infrastructure on GCP using Terraform, Docker,
+                and Kubernetes.
+              </p>
+              <p>
+                I studied Computer Science (BSc Honors) at the University of
+                Manitoba. My interest in problem solving goes back to high
+                school math competitions — what stuck was learning how to find
+                the right angle on a hard problem. That led me into ML research
+                at the Database Datamining Lab, and eventually into software.
+              </p>
+              <p>
+                Outside of work, I keep up with the AI space by building
+                personal projects around LLMs, RAG pipelines, and AI-powered
+                tooling — exploring how these systems can be designed and
+                integrated into real products.
+              </p>
+            </div>
+            <div className="flex flex-col xl:flex-row items-center justify-start gap-8">
               <a
                 href="/Daniel_Resume.pdf"
                 target="_blank"
@@ -39,7 +65,6 @@ const Home = () => {
                   className="uppercase flex items-center gap-2"
                 >
                   <span>View Resume</span>
-                  <FiDownload className="text-xl" />
                 </Button>
               </a>
               <div className="mb-8 xl:mb-0">
@@ -51,7 +76,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="order-1 xl:order-none mb-8 xl:mb-0">
+          <div className="order-1 xl:order-none mb-2 xl:mb-0">
             <Photo />
           </div>
         </div>

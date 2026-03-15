@@ -10,5 +10,4 @@ export const pageLinks = [
   { name: "projects", href: "/projects" },
   { name: "experience", href: "/experience" },
   { name: "contact", href: "/contact" },
-  { name: "blog", href: "/blog" },
 ];
