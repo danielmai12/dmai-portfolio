@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -8,9 +9,10 @@ import { pageLinks } from "@/lib/utils";
 
 const MobileNavigation = () => {
   const pathName = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className="flex justify-center items-center">
         <CiMenuFries
           className="text-[32px]"
@@ -27,7 +29,7 @@ const MobileNavigation = () => {
       >
         {/* logo */}
         <div className="mt-32 mb-48 text-center text-2xl">
-          <Link href="/">
+          <Link href="/" onClick={() => setOpen(false)}>
             <h1
               className="text-4xl font-semibold tracking-tight"
               style={{ color: "var(--primary-color)" }}
@@ -43,6 +45,7 @@ const MobileNavigation = () => {
             <Link
               href={link.href}
               key={index}
+              onClick={() => setOpen(false)}
               className="text-xl capitalize transition-all duration-200"
               style={{
                 color:

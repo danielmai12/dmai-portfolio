@@ -13,8 +13,11 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Daniel Mai",
-  description: "Portfolio of Daniel Mai, Software Engineer",
+  title: "Daniel Mai - Software Engineer",
+  description: "Daniel Mai - Software Engineer and life long learner",
+  icons: {
+    icon: "/assets/dm_logo.svg",
+  },
 };
 
 export default function RootLayout({

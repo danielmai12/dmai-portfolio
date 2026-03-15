@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" width="120" height="80">
+  <!-- background -->
+  <rect width="120" height="80" rx="10" ry="10" fill="#b08040"/>
+  <!-- bracket left -->
+  <path d="M14 10 L6 10 L6 70 L14 70" fill="none" stroke="#f2efe8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- DM -->
+  <text font-family="Georgia, serif" font-size="44" font-weight="500" fill="#f2efe8" letter-spacing="4" x="18" y="57">DM</text>
+  <!-- bracket right -->
+  <path d="M104 10 L112 10 L112 70 L104 70" fill="none" stroke="#f2efe8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- dot -->
+  <circle cx="118" cy="57" r="4.5" fill="#2c2926"/>
+</svg>
