@@ -1,9 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
+const photos = ["/assets/photo-1.png", "/assets/photo.png"];
+
 const Photo = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % photos.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="w-[222px] h-[222px] xl:w-[506px] xl:h-[506px] relative">
       <motion.div
@@ -13,23 +25,25 @@ const Photo = () => {
           transition: { delay: 0.5, duration: 0.4, ease: "easeIn" },
         }}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            transition: { delay: 0.5, duration: 0.4, ease: "easeInOut" },
-          }}
-          className="w-[220px] h-[220px] xl:w-[498px] xl:h-[498px] absolute top-0 left-0"
-        >
-          <Image
-            src={"/assets/photo.png"}
-            priority
-            quality={100}
-            fill
-            alt="Daniel Mai"
-            className="object-contain"
-          />
-        </motion.div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={photos[index]}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="w-[220px] h-[220px] xl:w-[498px] xl:h-[498px] absolute top-0 left-0"
+          >
+            <Image
+              src={photos[index]}
+              priority
+              quality={100}
+              fill
+              alt="Daniel Mai"
+              className="object-cover object-top"
+            />
+          </motion.div>
+        </AnimatePresence>
 
         <motion.svg
           className="w-[222px] xl:w-[506px] h-[222px] xl:h-[506px]"
