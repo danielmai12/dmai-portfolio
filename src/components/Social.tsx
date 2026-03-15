@@ -1,12 +1,17 @@
 import Link from "next/link";
 
-import { FaGithub, FaLinkedin, FaYoutube, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 const socials = [
-  { icon: <FaGithub />, path: "" },
-  { icon: <FaLinkedin />, path: "" },
-  { icon: <FaYoutube />, path: "" },
-  { icon: <FaTwitter />, path: "" },
+  { icon: <FaGithub />, path: "https://github.com/danielmai12" },
+  {
+    icon: <FaLinkedin />,
+    path: "https://www.linkedin.com/in/daniel-mai-1201/",
+  },
+  // { icon: <FaYoutube />, path: "" },
+  { icon: <FaTwitter />, path: "https://x.com/dmai1201" },
+  { icon: <SiLeetcode />, path: "https://leetcode.com/u/DanielMai/" },
 ];
 
 /**
