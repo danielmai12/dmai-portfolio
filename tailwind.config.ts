@@ -3,9 +3,9 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     container: {
@@ -19,14 +19,14 @@ const config: Config = {
       xl: "1200px",
     },
     fontFamily: {
-      primary: ["var(--font-jetbrainsMono)"],
+      primary: ["var(--font-dmSans)"],
     },
     extend: {
       colors: {
-        primary: "#1c1c22",
+        primary: "var(--bg-color)",
         accent: {
-          DEFAULT: "#00ff99",
-          hover: "#00e187",
+          DEFAULT: "#8b2500",
+          hover: "#701e00",
         },
       },
       keyframes: {

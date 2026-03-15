@@ -1,7 +1,6 @@
 "use client";
 
 import CountUp from "react-countup";
-import { text } from "stream/consumers";
 
 const stats = [
   {
@@ -21,6 +20,7 @@ const stats = [
     text: "Happy Clients",
   },
 ];
+
 const Stats = () => {
   return (
     <section className="pt-4 pb-12 xl:pt-0 xl:pb-0">
@@ -36,11 +36,13 @@ const Stats = () => {
                 duration={5}
                 delay={2}
                 className="text-4xl xl:text-6xl font-extrabold"
+                style={{ color: "var(--primary-color)" } as React.CSSProperties}
               />
               <p
                 className={`${
                   item.text.length < 15 ? "max-w-[100px]" : "max-w-[150px]"
-                } leading-snug text-white/80`}
+                } leading-snug`}
+                style={{ color: "var(--text-color)" }}
               >
                 {item.text}
               </p>

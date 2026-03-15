@@ -12,14 +12,27 @@ const MobileNavigation = () => {
   return (
     <Sheet>
       <SheetTrigger className="flex justify-center items-center">
-        <CiMenuFries className="text-[32px] text-accent" />
+        <CiMenuFries
+          className="text-[32px]"
+          style={{ color: "var(--text-color)" }}
+        />
       </SheetTrigger>
-      <SheetContent className="flex flex-col">
+      <SheetContent
+        className="flex flex-col"
+        style={{
+          backgroundColor: "var(--bg-color)",
+          borderColor: "var(--border-color)",
+          color: "var(--text-color)",
+        }}
+      >
         {/* logo */}
         <div className="mt-32 mb-48 text-center text-2xl">
           <Link href="/">
-            <h1 className="text-4xl font-semibold">
-              Daniel<span className="text-accent">.</span>
+            <h1
+              className="text-4xl font-semibold tracking-tight"
+              style={{ color: "var(--primary-color)" }}
+            >
+              Daniel<span style={{ color: "var(--accent-color)" }}>.</span>
             </h1>
           </Link>
         </div>
@@ -30,9 +43,14 @@ const MobileNavigation = () => {
             <Link
               href={link.href}
               key={index}
-              className={`${
-                link.href === pathName && "text-accent border-b-2 border-accent"
-              }text-xl capitalize hover:text-accent transition-all`}
+              className="text-xl capitalize transition-all duration-200"
+              style={{
+                color:
+                  link.href === pathName
+                    ? "var(--primary-color)"
+                    : "var(--text-color)",
+                fontWeight: link.href === pathName ? 600 : 500,
+              }}
             >
               {link.name}
             </Link>

@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light Theme (Morning Fog) - default */
+:root {
+  --bg-color: #f2efe8;
+  --text-color: #6d6355;
+  --primary-color: #2c2926;
+  --secondary-color: #a69d93;
+  --accent-color: #8b2500;
+  --card-bg: #faf8f5;
+  --border-color: #ddd8cd;
+  --input-bg: #edeae3;
+  --input-border: #ddd8cd;
+  --hover-bg: #e9e5db;
+  --button-bg: #2c2926;
+  --button-text: #f2efe8;
+  --muted-text: #a69d93;
+  --shadow: 0 4px 12px rgba(44, 41, 38, 0.06);
+  --toggle-glow: rgba(109, 99, 85, 0.2);
+}
+
+/* Dark Theme (Piano Symphony) */
+:root[data-theme="dark"] {
+  --bg-color: #1c1b19;
+  --text-color: #c8c2b8;
+  --primary-color: #e8e2d8;
+  --secondary-color: #a69d93;
+  --accent-color: #8b2500;
+  --card-bg: #2a2825;
+  --border-color: #3a3632;
+  --input-bg: #2a2825;
+  --input-border: #4a4540;
+  --hover-bg: #3a3632;
+  --button-bg: #e8e2d8;
+  --button-text: #1c1b19;
+  --muted-text: #8a8078;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --toggle-glow: rgba(232, 226, 216, 0.15);
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .h1 {
+    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
+    color: var(--primary-color);
+  }
+  .h2 {
+    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
+    color: var(--primary-color);
+  }
+  .h3 {
+    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+    color: var(--primary-color);
+  }
+}
+
+@layer utilities {
+  .bg-theme {
+    background-color: var(--bg-color);
+  }
+  .bg-card-theme {
+    background-color: var(--card-bg);
+  }
+  .text-theme {
+    color: var(--text-color);
+  }
+  .text-heading {
+    color: var(--primary-color);
+  }
+  .text-muted-theme {
+    color: var(--secondary-color);
+  }
+  .border-theme {
+    border-color: var(--border-color);
+  }
+}
