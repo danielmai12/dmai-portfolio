@@ -1,4 +1,4 @@
-export const categories = ["System Design", "Backend", "Database", "Leetcode", "DevOps"] as const;
+export const categories = ["System Design", "Cloud & Infrastructure", "Backend", "Database", "Leetcode", "DevOps"] as const;
 export type Category = (typeof categories)[number];
 
 export interface Article {
