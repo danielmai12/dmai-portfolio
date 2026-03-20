@@ -4,9 +4,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { articles, categories, type Category } from "@/data/articles";
+import { useBlogPrefix } from "@/hooks/useBlogPath";
 
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("System Design");
+  const blogPath = useBlogPrefix();
 
   const filtered = articles.filter((a) => a.category === activeCategory);
 
@@ -112,7 +114,7 @@ const BlogPage = () => {
                 }}
               >
                 <Link
-                  href={`/blog/${article.slug}`}
+                  href={blogPath(`/blog/${article.slug}`)}
                   className="group block rounded-lg p-5 h-full"
                   style={{
                     border: "1px solid var(--border-color)",

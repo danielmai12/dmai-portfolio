@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useBlogPrefix } from "@/hooks/useBlogPath";
 
 interface ArticleHeaderProps {
   category: string;
@@ -16,6 +17,7 @@ export default function ArticleHeader({
   date,
   readingTime,
 }: ArticleHeaderProps) {
+  const blogPath = useBlogPrefix();
   return (
     <>
       {/* Back link */}
@@ -25,7 +27,7 @@ export default function ArticleHeader({
         transition={{ duration: 0.35, ease: "easeOut" }}
       >
         <Link
-          href="/blog"
+          href={blogPath("/blog")}
           className="block text-xs font-medium mb-8 transition-colors duration-200 hover:text-heading"
           style={{ color: "var(--muted-text)" }}
         >
