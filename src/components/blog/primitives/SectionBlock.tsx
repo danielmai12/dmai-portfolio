@@ -36,7 +36,7 @@ export default function SectionBlock({
       animate={{ opacity: isInView ? 1 : 0.3 }}
       transition={{ duration: 0.4 }}
       className={
-        isFirst ? "py-8" : "min-h-[40vh] flex flex-col justify-center py-8"
+        isFirst ? "" : "min-h-[40vh] flex flex-col justify-center py-8"
       }
     >
       <h3

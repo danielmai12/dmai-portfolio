@@ -19,7 +19,7 @@ const sections = [
           into your browser and hit enter.
         </p>
         <p>
-          In the next ~100–300 milliseconds, your request will traverse multiple
+          In the next ~100-300 milliseconds, your request will traverse multiple
           systems — DNS resolution, TCP handshakes, CDN edges, load balancers,
           and finally reach an application server. Each layer has a purpose.
         </p>
