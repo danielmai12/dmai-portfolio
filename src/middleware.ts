@@ -7,8 +7,7 @@ export function middleware(request: NextRequest) {
   if (host === "blog.codewithdmai.com") {
     const { pathname } = request.nextUrl;
 
-    // Already on /blog path — no rewrite needed
-    if (pathname.startsWith("/blog")) {
+    if (pathname.startsWith("/_next") || pathname.startsWith("/blog")) {
       return NextResponse.next();
     }
 
