@@ -9,4 +9,6 @@ export interface Article {
   summary: string;
   readingTime: string;
   content: string;
+  /** If set, render a custom interactive component instead of markdown */
+  interactive?: boolean;
 }

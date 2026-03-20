@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { articles } from "@/data/articles";
 import ArticleHeader from "./ArticleHeader";
 import ArticleContent from "./ArticleContent";
+import { getInteractiveComponent } from "./interactive";
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -19,16 +20,26 @@ export default async function ArticlePage({
     notFound();
   }
 
+  const InteractiveComponent = article.interactive
+    ? getInteractiveComponent(article.slug)
+    : null;
+
   return (
     <section className="py-16 min-h-screen">
-      <div className="container mx-auto max-w-[750px]">
+      <div
+        className={`container mx-auto px-4 ${InteractiveComponent ? "max-w-[1300px]" : "max-w-[750px]"}`}
+      >
         <ArticleHeader
           category={article.category}
           title={article.title}
           date={article.date}
           readingTime={article.readingTime}
         />
-        <ArticleContent content={article.content} />
+        {InteractiveComponent ? (
+          <InteractiveComponent />
+        ) : (
+          <ArticleContent content={article.content} />
+        )}
       </div>
     </section>
   );
