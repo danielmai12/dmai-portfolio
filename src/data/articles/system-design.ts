@@ -319,4 +319,39 @@ Response travels back the same path
 
 The internet is a system of systems. The more you understand each layer, the better you can design, debug, and optimize what you build on top of it.`,
   },
+  {
+    slug: "vpc-networking-cloud-infrastructure",
+    title: "VPC — Your Private Network in the Cloud",
+    date: "Mar 19, 2026",
+    category: "System Design",
+    summary:
+      "Subnets, gateways, route tables, security groups, and CIDR blocks — how cloud networking actually works under the hood.",
+    readingTime: "8 min read",
+    interactive: true,
+    content: `## VPC — Your Private Network in the Cloud
+
+A Virtual Private Cloud (VPC) is your isolated network within a cloud provider. Every resource you deploy lives inside one.
+
+### Core Concepts
+
+**Subnets** partition your VPC into public (internet-facing), private (internal), and isolated (no internet) zones.
+
+**Internet Gateway (IGW)** enables bidirectional internet access for public subnets. **NAT Gateway** lets private resources make outbound requests without being exposed.
+
+**Route Tables** determine where traffic flows — they're what actually make a subnet "public" or "private."
+
+**Security Groups** (stateful, per-instance) and **NACLs** (stateless, per-subnet) provide two layers of firewall protection.
+
+**VPC Peering** connects two VPCs directly. **Transit Gateway** acts as a hub for many VPCs at scale.
+
+**CIDR Blocks** define your IP address space. Plan carefully — overlapping CIDRs prevent peering.
+
+### A Typical Production VPC
+
+\`\`\`
+Internet → IGW → ALB (public subnet) → App Server (private subnet) → RDS (isolated subnet)
+\`\`\`
+
+Defense in depth: multiple layers of network isolation ensuring that even if one layer is compromised, the blast radius is contained.`,
+  },
 ];

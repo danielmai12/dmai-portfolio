@@ -9,6 +9,9 @@ const interactiveComponents: Record<string, ComponentType> = {
   "load-balancers-reverse-proxies-api-gateways": dynamic(
     () => import("./system-design/LbInteractive"),
   ),
+  "vpc-networking-cloud-infrastructure": dynamic(
+    () => import("./system-design/VpcInteractive"),
+  ),
   // Leetcode
   // Backend
   // Database
