@@ -41,9 +41,15 @@ const MobileNavigation = () => {
 
         {/* nav */}
         <nav className="flex flex-col justify-center items-center gap-8">
-          {pageLinks.map((link, index) => (
-            <Link
-              href={link.href}
+          {pageLinks.map((link, index) => {
+            const isExternal = link.href.startsWith("http");
+            const LinkComponent = isExternal ? "a" : Link;
+            const linkProps = isExternal
+              ? { href: link.href, target: "_blank", rel: "noopener noreferrer" }
+              : { href: link.href };
+            return (
+            <LinkComponent
+              {...linkProps}
               key={index}
               onClick={() => setOpen(false)}
               className="text-xl capitalize transition-all duration-200"
@@ -56,8 +62,9 @@ const MobileNavigation = () => {
               }}
             >
               {link.name}
-            </Link>
-          ))}
+            </LinkComponent>
+            );
+          })}
         </nav>
       </SheetContent>
     </Sheet>

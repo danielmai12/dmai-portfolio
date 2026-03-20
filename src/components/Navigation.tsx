@@ -9,10 +9,16 @@ const Navigation = () => {
 
   return (
     <nav className="flex items-center">
-      {pageLinks.map((link, index) => (
+      {pageLinks.map((link, index) => {
+        const isExternal = link.href.startsWith("http");
+        const LinkComponent = isExternal ? "a" : Link;
+        const linkProps = isExternal
+          ? { href: link.href, target: "_blank", rel: "noopener noreferrer" }
+          : { href: link.href };
+        return (
         <div key={index} className="flex items-center">
-          <Link
-            href={link.href}
+          <LinkComponent
+            {...linkProps}
             className="capitalize text-sm px-1 py-2 transition-all duration-200"
             style={{
               color:
@@ -23,7 +29,7 @@ const Navigation = () => {
             }}
           >
             {link.name}
-          </Link>
+          </LinkComponent>
           {index < pageLinks.length - 1 && (
             <span
               className="mx-2 text-xs select-none"
@@ -34,7 +40,8 @@ const Navigation = () => {
             </span>
           )}
         </div>
-      ))}
+        );
+      })}
     </nav>
   );
 };
