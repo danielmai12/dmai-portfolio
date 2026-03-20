@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import PageTransition from "@/components/PageTransition";
-import StairTransition from "@/components/StairTransition";
+import LayoutShell from "@/components/LayoutShell";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 const dmSans = DM_Sans({
@@ -36,11 +34,7 @@ export default function RootLayout({
       </head>
       <body className={`${dmSans.variable} font-primary`}>
         <ThemeProvider>
-          <Header />
-          <StairTransition />
-          <main className="pt-16">
-            <PageTransition>{children}</PageTransition>
-          </main>
+          <LayoutShell>{children}</LayoutShell>
         </ThemeProvider>
       </body>
     </html>
