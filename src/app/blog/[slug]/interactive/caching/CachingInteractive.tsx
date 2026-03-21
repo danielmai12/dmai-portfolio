@@ -784,6 +784,40 @@ export default function CachingInteractive() {
           </div>
         </div>
       </section>
+
+      {/* References */}
+      <section>
+        <div
+          className="h-px w-full mb-8"
+          style={{ backgroundColor: "var(--border-color)", opacity: 0.6 }}
+        />
+        <h2
+          className="text-lg font-semibold mb-4"
+          style={{ color: "var(--heading-color)" }}
+        >
+          References
+        </h2>
+        <ul className="space-y-2 text-sm">
+          <li className="flex items-start gap-2">
+            <span style={{ color: "var(--accent-color)", flexShrink: 0 }}>→</span>
+            <a
+              href="https://www.hellointerview.com/learn/system-design/core-concepts/caching"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors duration-200"
+              style={{ color: "var(--primary-color)" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = "0.7";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = "1";
+              }}
+            >
+              Hello Interview — Caching Core Concepts
+            </a>
+          </li>
+        </ul>
+      </section>
     </div>
   );
 }
