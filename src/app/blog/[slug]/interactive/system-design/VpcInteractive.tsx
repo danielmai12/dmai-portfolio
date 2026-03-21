@@ -22,12 +22,12 @@ const sections: Section[] = [
           <strong style={{ color: "var(--primary-color)" }}>
             VPC (Virtual Private Cloud)
           </strong>{" "}
-          is your own isolated network inside a cloud provider — AWS, GCP, or
+          is your own isolated network inside a cloud provider like AWS, GCP, or
           Azure.
         </p>
         <p>
           Think of it like renting a floor in an office building. The building
-          (cloud provider) has shared infrastructure — electricity, elevators,
+          (cloud provider) has shared infrastructure: electricity, elevators,
           security guards. But your floor is{" "}
           <strong style={{ color: "var(--accent-color)" }}>
             completely private
@@ -35,8 +35,8 @@ const sections: Section[] = [
           . You decide who gets in, how rooms are connected, and what goes where.
         </p>
         <p>
-          Every resource you launch — Compute Engine VMs, Cloud SQL databases, Cloud
-          Functions (or AWS EC2, RDS, Lambda) — lives inside a VPC. Understanding VPC networking is
+          Every resource you launch (Compute Engine VMs, Cloud SQL databases, Cloud
+          Functions, or their AWS equivalents: EC2, RDS, Lambda) lives inside a VPC. Understanding VPC networking is
           foundational to cloud architecture.
         </p>
       </>
@@ -44,20 +44,20 @@ const sections: Section[] = [
   },
   {
     step: "subnets",
-    title: "Subnets — Public vs Private",
+    title: "Subnets: Public vs Private",
     content: (
       <>
         <p>
           A VPC is divided into{" "}
-          <strong style={{ color: "var(--primary-color)" }}>subnets</strong> —
+          <strong style={{ color: "var(--primary-color)" }}>subnets</strong>,
           logical partitions of your network. Each subnet lives in a specific
           zone (GCP) or Availability Zone (AWS).
         </p>
         <p style={{ color: "var(--muted-text)", fontStyle: "italic" }}>
           Think of subnets as different rooms on your office floor. The{" "}
-          <strong style={{ color: "#2ecc71" }}>lobby</strong> is public — anyone can walk in. The{" "}
-          <strong style={{ color: "#3498db" }}>back office</strong> requires a badge — employees only. The{" "}
-          <strong style={{ color: "#9b59b6" }}>vault</strong> has no outside access at all — only internal staff with special clearance.
+          <strong style={{ color: "#2ecc71" }}>lobby</strong> is public: anyone can walk in. The{" "}
+          <strong style={{ color: "#3498db" }}>back office</strong> requires a badge, employees only. The{" "}
+          <strong style={{ color: "#9b59b6" }}>vault</strong> has no outside access at all, only internal staff with special clearance.
         </p>
         <div
           className="rounded-lg p-4 text-xs space-y-2"
@@ -70,7 +70,7 @@ const sections: Section[] = [
             <strong style={{ color: "#2ecc71" }}>Public Subnet</strong>
             <p className="mt-1">
               Has a route to the internet. Hosts resources that need to be
-              reachable from outside — load balancers, bastion hosts, web
+              reachable from outside: load balancers, bastion hosts, web
               servers.
             </p>
           </div>
@@ -82,9 +82,8 @@ const sections: Section[] = [
           >
             <strong style={{ color: "#3498db" }}>Private Subnet</strong>
             <p className="mt-1">
-              No direct internet access. Hosts your application servers,
-              internal services — anything that shouldn&apos;t be publicly
-              reachable.
+              No direct internet access. Hosts your application servers and
+              internal services. Nothing here should be publicly reachable.
             </p>
           </div>
           <div
@@ -95,7 +94,7 @@ const sections: Section[] = [
           >
             <strong style={{ color: "#9b59b6" }}>Isolated Subnet</strong>
             <p className="mt-1">
-              No internet access at all — not even outbound. Databases (Cloud SQL / RDS,
+              No internet access, not even outbound. Databases (Cloud SQL / RDS,
               Memorystore / ElastiCache) live here. Maximum isolation.
             </p>
           </div>
@@ -120,8 +119,8 @@ const sections: Section[] = [
           Two gateways control how your VPC talks to the internet.
         </p>
         <p style={{ color: "var(--muted-text)", fontStyle: "italic" }}>
-          The IGW is like the <strong>front door</strong> of your building — visitors can come in and employees can go out.
-          The NAT is like a <strong>mail room</strong> — employees in the back office can send letters out, but no one outside can walk in through the mail room.
+          The IGW is like the <strong>front door</strong> of your building: visitors can come in and employees can go out.
+          The NAT is like a <strong>mail room</strong>: employees in the back office can send letters out, but no one outside can walk in through the mail room.
         </p>
         <div
           className="rounded-lg p-4 text-xs space-y-3"
@@ -156,14 +155,14 @@ const sections: Section[] = [
           </div>
         </div>
         <p>
-          Watch the diagram — the App Server in the private subnet routes
+          In the diagram, the App Server in the private subnet routes
           outbound traffic through{" "}
           <span style={{ color: "#e67e22", fontWeight: 500 }}>NAT</span> →{" "}
           <span style={{ color: "#2ecc71", fontWeight: 500 }}>IGW</span> →
           Internet. But no one on the internet can initiate a connection back to it.
         </p>
         <p style={{ color: "var(--muted-text)", fontStyle: "italic" }}>
-          NAT costs money — Cloud NAT charges per VM + data, AWS NAT Gateway ~$32/mo + data processing. For dev
+          NAT costs money. Cloud NAT charges per VM + data; AWS NAT Gateway runs ~$32/mo plus data processing. For dev
           environments, some teams use NAT instances or Private Service Connect / VPC endpoints instead.
         </p>
       </>
@@ -176,12 +175,12 @@ const sections: Section[] = [
       <>
         <p>
           Every subnet has a{" "}
-          <strong style={{ color: "var(--primary-color)" }}>route table</strong>{" "}
-          — a set of rules that decide where traffic goes.
+          <strong style={{ color: "var(--primary-color)" }}>route table</strong>
+          , a set of rules that decide where traffic goes.
         </p>
         <p style={{ color: "var(--muted-text)", fontStyle: "italic" }}>
-          Like <strong>signs in the hallway</strong> — &ldquo;Floor 2? Take the stairs. Outside? Go through the front door. Restricted area? No exit.&rdquo;
-          Route tables are the directions that tell every packet where to go next.
+          Like <strong>signs in the hallway</strong>: &ldquo;Floor 2? Take the stairs. Outside? Go through the front door. Restricted area? No exit.&rdquo;
+          Route tables tell every packet where to go next.
         </p>
         <div
           className="rounded-lg p-4 text-xs font-mono space-y-2"
@@ -213,7 +212,7 @@ const sections: Section[] = [
           <code className="article-inline-code">10.0.0.0/16 → local</code>{" "}
           rule means all traffic within the VPC stays internal. The{" "}
           <code className="article-inline-code">0.0.0.0/0</code> rule is the
-          default route — where traffic goes when there&apos;s no more specific
+          default route, which is where traffic goes when there&apos;s no more specific
           match.
         </p>
         <p>
@@ -221,7 +220,7 @@ const sections: Section[] = [
             This is what makes a subnet &ldquo;public&rdquo; or
             &ldquo;private&rdquo;
           </strong>{" "}
-          — it&apos;s not a property of the subnet itself, it&apos;s the route
+          It&apos;s not a property of the subnet itself, it&apos;s the route
           table. Point the default route at an IGW = public. Point it at a NAT =
           private. No default route = isolated.
         </p>
@@ -237,7 +236,7 @@ const sections: Section[] = [
           Firewall rules control traffic at the network level. The implementation differs by provider.
         </p>
         <p style={{ color: "var(--muted-text)", fontStyle: "italic" }}>
-          Think of <strong>security guards</strong> at different checkpoints. One guard sits at each room&apos;s door (instance-level) and remembers who they let in — if you entered, you can leave freely. Another guard sits at the hallway entrance (subnet-level) and checks both directions independently — badge in, badge out, every single time.
+          Think of <strong>security guards</strong> at different checkpoints. One guard sits at each room&apos;s door (instance-level) and remembers who they let in: if you entered, you can leave freely. Another guard sits at the hallway entrance (subnet-level) and checks both directions independently, badge in, badge out, every single time.
         </p>
         <div
           className="rounded-lg p-4 text-xs space-y-3"
@@ -248,10 +247,10 @@ const sections: Section[] = [
         >
           <div>
             <strong style={{ color: "#e67e22" }}>
-              GCP — VPC Firewall Rules
+              GCP - VPC Firewall Rules
             </strong>
             <p className="mt-1">
-              <strong>Stateful</strong> — applied at the VPC level, targeted by network tags or service accounts.
+              <strong>Stateful</strong>, applied at the VPC level and targeted by network tags or service accounts.
               Each rule specifies direction (ingress/egress), priority, source/destination, protocol, and port. Deny-all-ingress and allow-all-egress are implied defaults.
             </p>
           </div>
@@ -262,16 +261,16 @@ const sections: Section[] = [
             }}
           >
             <strong style={{ color: "#e67e22" }}>
-              AWS — Security Groups + NACLs
+              AWS - Security Groups + NACLs
             </strong>
             <p className="mt-1">
-              Two layers: <strong>Security Groups</strong> (stateful, per-instance — if you allow inbound 443, the response is auto-allowed) and{" "}
-              <strong>NACLs</strong> (stateless, per-subnet — must explicitly allow both directions). Most teams rely on Security Groups and leave NACLs at defaults.
+              Two layers: <strong>Security Groups</strong> (stateful, per-instance: if you allow inbound 443, the response is auto-allowed) and{" "}
+              <strong>NACLs</strong> (stateless, per-subnet: must explicitly allow both directions). Most teams rely on Security Groups and leave NACLs at defaults.
             </p>
           </div>
         </div>
         <p>
-          Watch the diagram — the{" "}
+          In the diagram, the{" "}
           <span style={{ color: "#e74c3c", fontWeight: 500 }}>red bars</span>{" "}
           are NACLs at the subnet boundary, and the{" "}
           <span style={{ color: "#e67e22", fontWeight: 500 }}>
@@ -297,7 +296,7 @@ const sections: Section[] = [
           </strong>{" "}
           most teams rely primarily on Security Groups and leave NACLs at their
           defaults. Use NACLs when you need to explicitly block specific IPs or
-          ranges at the subnet level. Firewall rules define source/destination IP, protocol, port, and allow/deny — for both{" "}
+          ranges at the subnet level. Firewall rules define source/destination IP, protocol, port, and allow/deny, covering both{" "}
           <strong>ingress</strong> (incoming) and <strong>egress</strong> (outgoing) traffic.
         </p>
       </>
@@ -317,8 +316,8 @@ const sections: Section[] = [
           teams own different VPCs.
         </p>
         <p style={{ color: "var(--muted-text)", fontStyle: "italic" }}>
-          VPC Peering is like building a <strong>private skybridge</strong> between two office buildings — direct, fast, but you need one bridge per pair.
-          A Transit Gateway is like a <strong>central bus terminal</strong> — every building connects once to the hub, and the hub routes between all of them.
+          VPC Peering is like building a <strong>private skybridge</strong> between two office buildings: direct and fast, but you need a separate bridge for every pair.
+          A Transit Gateway is like a <strong>central bus terminal</strong>: every building connects once to the hub, and the hub routes between all of them.
         </p>
         <div
           className="rounded-lg p-4 text-xs space-y-3"
@@ -333,7 +332,7 @@ const sections: Section[] = [
             </strong>
             <p className="mt-1">
               A direct 1:1 connection between two VPCs. Traffic stays on the
-              cloud provider&apos;s backbone — never touches the public internet.
+              cloud provider&apos;s backbone and never touches the public internet.
               Simple but doesn&apos;t scale: N VPCs need N(N-1)/2 peering
               connections.
             </p>
@@ -349,7 +348,7 @@ const sections: Section[] = [
             </strong>
             <p className="mt-1">
               A central hub that connects multiple VPCs (and on-prem networks)
-              through a single attachment point. Much cleaner at scale — add a
+              through a single attachment point. Much cleaner at scale: add a
               new VPC with one connection instead of peering with every other VPC.
               Called Network Connectivity Center (NCC) in GCP, Transit Gateway in AWS.
             </p>
@@ -402,11 +401,11 @@ const sections: Section[] = [
       <>
         <p>
           Every VPC needs a{" "}
-          <strong style={{ color: "var(--primary-color)" }}>CIDR block</strong>{" "}
-          — the range of IP addresses available inside it.
+          <strong style={{ color: "var(--primary-color)" }}>CIDR block</strong>
+          , which defines the range of IP addresses available inside it.
         </p>
         <p style={{ color: "var(--muted-text)", fontStyle: "italic" }}>
-          Think of it like <strong>postal codes</strong>. Your building gets a zip code range (the VPC CIDR), and each floor gets its own sub-range (subnet CIDRs). Two buildings can&apos;t share the same zip codes — if they do, mail gets lost. Same with IP addresses and peering.
+          Think of it like <strong>postal codes</strong>. Your building gets a zip code range (the VPC CIDR), and each floor gets its own sub-range (subnet CIDRs). Two buildings can&apos;t share the same zip codes or mail gets lost. Same goes for IP addresses and peering.
         </p>
         <div
           className="rounded-lg p-4 text-xs font-mono space-y-1"
@@ -435,7 +434,7 @@ const sections: Section[] = [
         <p>
           The{" "}
           <code className="article-inline-code">/16</code> means the first 16
-          bits are the network prefix — the remaining 16 bits are for hosts.
+          bits are the network prefix; the remaining 16 bits are for hosts.
           Smaller number = more IPs.
         </p>
         <p>
@@ -450,7 +449,7 @@ const sections: Section[] = [
           never be peered. Plan your IP space upfront.
         </p>
         <p style={{ color: "var(--muted-text)", fontStyle: "italic" }}>
-          Cloud providers reserve IPs per subnet — GCP reserves 4 (network, gateway, and 2 for future use), AWS reserves 5 (adds DNS). A /24 gives you ~251–252 usable IPs, not 256.
+          Cloud providers reserve IPs per subnet: GCP reserves 4 (network, gateway, and 2 for future use), AWS reserves 5 (adds DNS). A /24 gives you roughly 251-252 usable IPs, not 256.
         </p>
       </>
     ),
@@ -465,28 +464,28 @@ const sections: Section[] = [
           <li className="flex items-start gap-2">
             <span style={{ color: "var(--accent-color)" }}>→</span>
             <span>
-              <strong>Public subnet</strong> — ALB receives traffic from the
+              <strong>Public subnet</strong>: ALB receives traffic from the
               Internet Gateway
             </span>
           </li>
           <li className="flex items-start gap-2">
             <span style={{ color: "var(--accent-color)" }}>→</span>
             <span>
-              <strong>Private subnet</strong> — App servers process requests,
+              <strong>Private subnet</strong>: App servers process requests,
               use NAT for outbound
             </span>
           </li>
           <li className="flex items-start gap-2">
             <span style={{ color: "var(--accent-color)" }}>→</span>
             <span>
-              <strong>Isolated subnet</strong> — Cloud SQL/Memorystore (or RDS/ElastiCache) with no
+              <strong>Isolated subnet</strong>: Cloud SQL/Memorystore (or RDS/ElastiCache) with no
               internet access at all
             </span>
           </li>
           <li className="flex items-start gap-2">
             <span style={{ color: "var(--accent-color)" }}>→</span>
             <span>
-              <strong>Firewall rules</strong> — least-privilege per resource
+              <strong>Firewall rules</strong>: least-privilege per resource
               (LB allows 443, app allows LB only, DB allows app only)
             </span>
           </li>
@@ -514,9 +513,9 @@ const sections: Section[] = [
           className="font-medium"
           style={{ color: "var(--primary-color)" }}
         >
-          A well-designed VPC is defense in depth — multiple layers of network
-          isolation ensuring that even if one layer is compromised, the blast
-          radius is contained.
+          A well-designed VPC is defense in depth. Multiple layers of network
+          isolation mean that even if one layer is compromised, the blast
+          radius stays contained.
         </p>
       </>
     ),

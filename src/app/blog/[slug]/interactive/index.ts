@@ -12,6 +12,9 @@ const interactiveComponents: Record<string, ComponentType> = {
   "vpc-networking-cloud-infrastructure": dynamic(
     () => import("./system-design/VpcInteractive"),
   ),
+  "caching-strategies-patterns-redis": dynamic(
+    () => import("./system-design/CachingInteractive"),
+  ),
   // Cloud & Infrastructure
   "scaling-availability-auto-scaling-high-availability": dynamic(
     () => import("./system-design/ScalingInteractive"),
