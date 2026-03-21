@@ -2,27 +2,21 @@ import dynamic from "next/dynamic";
 import { ComponentType } from "react";
 
 const interactiveComponents: Record<string, ComponentType> = {
-  // System Design
   "dns-cdns-internet-traffic-routing": dynamic(
-    () => import("./system-design/DnsInteractive"),
+    () => import("./dns/DnsInteractive"),
   ),
   "load-balancers-reverse-proxies-api-gateways": dynamic(
-    () => import("./system-design/LbInteractive"),
+    () => import("./load-balancers/LbInteractive"),
   ),
   "vpc-networking-cloud-infrastructure": dynamic(
-    () => import("./system-design/VpcInteractive"),
+    () => import("./vpc/VpcInteractive"),
   ),
   "caching-strategies-patterns-redis": dynamic(
-    () => import("./system-design/CachingInteractive"),
+    () => import("./caching/CachingInteractive"),
   ),
-  // Cloud & Infrastructure
   "scaling-availability-auto-scaling-high-availability": dynamic(
-    () => import("./system-design/ScalingInteractive"),
+    () => import("./scaling/ScalingInteractive"),
   ),
-  // Leetcode
-  // Backend
-  // Database
-  // DevOps
 };
 
 export function getInteractiveComponent(
