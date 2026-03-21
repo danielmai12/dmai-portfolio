@@ -8,9 +8,18 @@ import { useBlogPrefix } from "@/hooks/useBlogPath";
 
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("System Design");
+  const [search, setSearch] = useState("");
   const blogPath = useBlogPrefix();
 
-  const filtered = articles.filter((a) => a.category === activeCategory);
+  const query = search.trim().toLowerCase();
+  const filtered = query
+    ? articles.filter(
+        (a) =>
+          a.title.toLowerCase().includes(query) ||
+          a.summary.toLowerCase().includes(query) ||
+          a.category.toLowerCase().includes(query)
+      )
+    : articles.filter((a) => a.category === activeCategory);
 
   return (
     <section className="py-16 h-screen flex flex-col">
@@ -43,17 +52,68 @@ const BlogPage = () => {
           style={{ color: "var(--text-color)" }}
         >
           I believe the best engineers never stop learning. This is where I
-          document what I study each week — system design trade-offs, database
-          internals, algorithm patterns, and everything in between. Writing
-          things down forces clarity, and sharing it keeps me accountable.
+          write about things I find interesting — system design trade-offs,
+          database internals, algorithm patterns, and everything in between.
+          I enjoy breaking down complex topics and sharing what I know. Writing
+          forces clarity, and if it helps someone else along the way, even better.
         </motion.p>
+
+        {/* Search bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.08 }}
+          className="relative mb-6"
+        >
+          <svg
+            className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--muted-text)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search articles..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-9 pr-9 py-2 rounded-lg text-xs font-light outline-none transition-colors duration-200"
+            style={{
+              backgroundColor: "transparent",
+              border: "1px solid var(--border-color)",
+              color: "var(--text-color)",
+            }}
+            onFocus={(e) => {
+              e.currentTarget.style.borderColor = "var(--primary-color)";
+            }}
+            onBlur={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-color)";
+            }}
+          />
+          {search && (
+            <button
+              onClick={() => setSearch("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs transition-colors duration-200"
+              style={{ color: "var(--muted-text)" }}
+            >
+              ✕
+            </button>
+          )}
+        </motion.div>
 
         {/* Category filter */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="flex gap-2 mb-10 flex-wrap"
+          className={`flex gap-2 mb-10 flex-wrap${query ? " opacity-40 pointer-events-none" : ""}`}
         >
           {categories.map((cat) => (
             <button
@@ -86,18 +146,20 @@ const BlogPage = () => {
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="flex flex-col items-center justify-center py-20"
             >
-              <span className="text-4xl mb-4">🚧</span>
+              <span className="text-4xl mb-4">{query ? "🔍" : "🚧"}</span>
               <p
                 className="text-sm font-medium mb-2"
                 style={{ color: "var(--primary-color)" }}
               >
-                Brewing fresh content...
+                {query ? "No results found" : "Brewing fresh content..."}
               </p>
               <p
                 className="text-xs font-light"
                 style={{ color: "var(--muted-text)" }}
               >
-                New {activeCategory} articles are on the way. Check back soon!
+                {query
+                  ? `Nothing matched "${search.trim()}". Try a different keyword.`
+                  : `New ${activeCategory} articles are on the way. Check back soon!`}
               </p>
             </motion.div>
           ) : (
