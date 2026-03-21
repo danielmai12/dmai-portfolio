@@ -9,10 +9,10 @@ const NH = 44;
 
 // Consistent color palette for node types
 const C = {
-  app: { bg: "#162438", border: "#2a5a8a" }, // blue
-  cache: { bg: "#1a3528", border: "#2a8a5a" }, // green
-  db: { bg: "#281a35", border: "#6a3a8a" }, // purple
-  user: { bg: "#1a2830", border: "#3a7a8a" }, // teal
+  app: { bg: "rgba(42, 90, 138, 0.12)", border: "#2a5a8a" }, // blue
+  cache: { bg: "rgba(42, 138, 90, 0.12)", border: "#2a8a5a" }, // green
+  db: { bg: "rgba(106, 58, 138, 0.12)", border: "#6a3a8a" }, // purple
+  user: { bg: "rgba(58, 122, 138, 0.12)", border: "#3a7a8a" }, // teal
 };
 
 function Node({
@@ -451,7 +451,7 @@ export function ClientCacheDiagram() {
         emoji="📱"
         label="Device"
         color={C.user}
-        highlight={step === 0 ? "#1a3a2a" : undefined}
+        highlight={step === 0 ? "rgba(42, 138, 90, 0.2)" : undefined}
       />
       <Node x={320} y={65} emoji="🖥️" label="Server" color={C.app} />
       {step === 0 && (
@@ -544,7 +544,7 @@ export function InProcessCacheDiagram() {
         width={100}
         height={42}
         rx={8}
-        fill={step <= 1 ? "#1a3a2a" : C.cache.bg}
+        fill={step <= 1 ? "rgba(42, 138, 90, 0.2)" : C.cache.bg}
         stroke={step <= 1 ? "#2ecc71" : C.cache.border}
         strokeWidth={1.5}
       />
@@ -985,7 +985,7 @@ export function StampedeDiagram() {
         iconColor="#DC382D"
         label="Cache"
         color={C.cache}
-        highlight={step === 0 ? "#3a1a1a" : step === 4 ? "#1a2a3a" : undefined}
+        highlight={step === 0 ? "rgba(138, 42, 42, 0.2)" : step === 4 ? "rgba(42, 90, 138, 0.2)" : undefined}
       />
       <Node
         x={370}

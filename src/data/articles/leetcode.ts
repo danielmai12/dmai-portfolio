@@ -1,4 +1,4 @@
-import { Article } from "./types";
+import { Article, CATEGORY } from "./types";
 
 export const leetcodeArticles: Article[] = [
   //   {

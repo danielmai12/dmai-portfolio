@@ -1,3 +1,3 @@
-import { Article } from "./types";
+import { Article, CATEGORY } from "./types";
 
 export const backendArticles: Article[] = [];

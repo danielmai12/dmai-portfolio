@@ -17,6 +17,9 @@ const interactiveComponents: Record<string, ComponentType> = {
   "scaling-availability-auto-scaling-high-availability": dynamic(
     () => import("./scaling/ScalingInteractive"),
   ),
+  "cap-theorem-distributed-consensus": dynamic(
+    () => import("./cap-theorem/CapInteractive"),
+  ),
 };
 
 export function getInteractiveComponent(

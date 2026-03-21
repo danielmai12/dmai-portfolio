@@ -1,11 +1,11 @@
-import { Article } from "./types";
+import { Article, CATEGORY } from "./types";
 
 export const databaseArticles: Article[] = [
   {
     slug: "database-indexing-101",
     title: "Database Indexing 101",
     date: "Mar 17, 2026",
-    category: "Database",
+    category: CATEGORY.DATABASE,
     summary:
       "Understanding how indexes work under the hood and when to add (or avoid) them.",
     readingTime: "6 min read",

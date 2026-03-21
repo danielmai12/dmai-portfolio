@@ -1,5 +1,13 @@
-export const categories = ["System Design", "Cloud & Infrastructure", "Backend", "Database", "Leetcode", "DevOps"] as const;
-export type Category = (typeof categories)[number];
+export const CATEGORY = {
+  SYSTEM_DESIGN: "System Design",
+  CLOUD_INFRA: "Cloud & Infrastructure",
+  BACKEND: "Backend",
+  DATABASE: "Database",
+  LEETCODE: "Leetcode",
+} as const;
+
+export const categories = Object.values(CATEGORY);
+export type Category = (typeof CATEGORY)[keyof typeof CATEGORY];
 
 export interface Article {
   slug: string;

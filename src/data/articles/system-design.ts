@@ -1,11 +1,11 @@
-import { Article } from "./types";
+import { Article, CATEGORY } from "./types";
 
 export const systemDesignArticles: Article[] = [
   {
     slug: "load-balancers-reverse-proxies-api-gateways",
     title: "Load Balancers, Reverse Proxies & API Gateways",
     date: "Mar 19, 2026",
-    category: "System Design",
+    category: CATEGORY.SYSTEM_DESIGN,
     summary:
       "Three components that sit between clients and servers. What each one does, how they overlap, and when you actually need them.",
     readingTime: "8 min read",
@@ -147,7 +147,7 @@ The right answer is always: **use the simplest setup that meets your current req
     slug: "dns-cdns-internet-traffic-routing",
     title: "DNS, CDNs & How the Internet Routes Traffic",
     date: "Mar 19, 2026",
-    category: "System Design",
+    category: CATEGORY.SYSTEM_DESIGN,
     summary:
       "What actually happens between typing a URL and seeing a page - DNS resolution, CDN edge caching, and how traffic finds its way across the internet.",
     readingTime: "9 min read",
@@ -323,7 +323,7 @@ The internet is a system of systems. The more you understand each layer, the bet
     slug: "caching-strategies-patterns-redis",
     title: "Caching - Strategies, Patterns & Common Problems",
     date: "Mar 20, 2026",
-    category: "System Design",
+    category: CATEGORY.SYSTEM_DESIGN,
     summary:
       "Where to cache, cache architectures (cache-aside, write-through, write-behind, read-through), eviction policies, and common problems like stampedes and hot keys.",
     readingTime: "15 min read",
@@ -365,38 +365,42 @@ LRU (least recently used, most common), LFU (least frequently used), FIFO (oldes
 **Hot Keys** - One key gets disproportionate traffic, overloading a single cache node. Solution: replicate hot keys, add local fallback cache.`,
   },
   {
-    slug: "vpc-networking-cloud-infrastructure",
-    title: "VPC - Your Private Network in the Cloud",
-    date: "Mar 19, 2026",
-    category: "System Design",
+    slug: "cap-theorem-distributed-consensus",
+    title: "CAP Theorem & Distributed Consensus",
+    date: "Mar 21, 2026",
+    category: CATEGORY.SYSTEM_DESIGN,
     summary:
-      "Subnets, gateways, route tables, security groups, and CIDR blocks - how cloud networking actually works under the hood.",
-    readingTime: "8 min read",
+      "What the CAP theorem actually means in practice, why partitions aren't optional, PACELC, and how Raft consensus keeps distributed systems in agreement.",
+    readingTime: "12 min read",
     interactive: true,
-    content: `## VPC - Your Private Network in the Cloud
+    content: `## CAP Theorem & Distributed Consensus
 
-A Virtual Private Cloud (VPC) is your isolated network within a cloud provider. Every resource you deploy lives inside one.
+Distributed systems run on multiple machines that communicate over a network. Networks are unreliable. Machines crash. The CAP theorem gives us a framework for reasoning about what guarantees a system can and cannot provide when things go wrong.
 
-### Core Concepts
+### The CAP Theorem
 
-**Subnets** partition your VPC into public (internet-facing), private (internal), and isolated (no internet) zones.
+Eric Brewer proposed in 2000 that a distributed data store can only provide two of three guarantees simultaneously:
 
-**Internet Gateway (IGW)** enables bidirectional internet access for public subnets. **NAT Gateway** lets private resources make outbound requests without being exposed.
+- **Consistency** - Every read returns the most recent write, or an error.
+- **Availability** - Every request gets a non-error response.
+- **Partition Tolerance** - The system keeps operating despite network splits.
 
-**Route Tables** determine where traffic flows - they're what actually make a subnet "public" or "private."
+In practice, partition tolerance is not optional. Networks fail. So the real choice is: during a partition, do you sacrifice consistency or availability?
 
-**Security Groups** (stateful, per-instance) and **NACLs** (stateless, per-subnet) provide two layers of firewall protection.
+**CP systems** (HBase, ZooKeeper, etcd) reject requests they can't confirm are consistent. **AP systems** (Cassandra, DynamoDB, CouchDB) always respond, even with potentially stale data.
 
-**VPC Peering** connects two VPCs directly. **Transit Gateway** acts as a hub for many VPCs at scale.
+### PACELC
 
-**CIDR Blocks** define your IP address space. Plan carefully - overlapping CIDRs prevent peering.
+CAP only describes behavior during partitions. PACELC extends it: if Partition, choose A or C. Else (normal operation), choose Latency or Consistency. This captures the tradeoff you make every day, not just during rare failures.
 
-### A Typical Production VPC
+### Distributed Consensus - Raft
 
-\`\`\`
-Internet → IGW → ALB (public subnet) → App Server (private subnet) → RDS (isolated subnet)
-\`\`\`
+Consensus is the process of getting multiple nodes to agree on a single value, even when some nodes fail. Raft breaks this into leader election and log replication.
 
-Defense in depth: multiple layers of network isolation ensuring that even if one layer is compromised, the blast radius is contained.`,
+**Leader Election:** When the leader goes down, a follower becomes a candidate, requests votes, and wins with a majority. Term numbers prevent stale leaders.
+
+**Log Replication:** The leader accepts writes, replicates them to followers, and commits once a majority acknowledges. This guarantees no committed data is lost even if the leader crashes.
+
+Raft powers etcd, Consul, CockroachDB, and Kafka's KRaft mode.`,
   },
 ];

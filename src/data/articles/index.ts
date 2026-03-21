@@ -1,11 +1,10 @@
-export { categories, type Category, type Article } from "./types";
+export { CATEGORY, categories, type Category, type Article } from "./types";
 
 import { systemDesignArticles } from "./system-design";
 import { cloudInfraArticles } from "./cloud-infrastructure";
 import { backendArticles } from "./backend";
 import { databaseArticles } from "./database";
 import { leetcodeArticles } from "./leetcode";
-import { devopsArticles } from "./devops";
 import { Article } from "./types";
 
 export const articles: Article[] = [
@@ -14,5 +13,4 @@ export const articles: Article[] = [
   ...backendArticles,
   ...databaseArticles,
   ...leetcodeArticles,
-  ...devopsArticles,
 ];
