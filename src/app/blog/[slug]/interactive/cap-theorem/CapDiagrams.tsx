@@ -155,9 +155,7 @@ function Timeline({
               borderRadius: 4,
               border: "none",
               background:
-                i === step
-                  ? "var(--primary-color)"
-                  : "var(--border-color)",
+                i === step ? "var(--primary-color)" : "var(--border-color)",
               cursor: "pointer",
               transition: "all 0.2s",
               padding: 0,
@@ -347,8 +345,25 @@ export function CapTriangleDiagram() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            <text x={135} y={90} textAnchor="middle" fontSize={10} fill="#2a8a5a" fontWeight={600}>CP</text>
-            <text x={135} y={105} textAnchor="middle" fontSize={8} fill="var(--muted-text)">HBase, ZooKeeper, etcd</text>
+            <text
+              x={135}
+              y={90}
+              textAnchor="middle"
+              fontSize={10}
+              fill="#2a8a5a"
+              fontWeight={600}
+            >
+              CP
+            </text>
+            <text
+              x={135}
+              y={105}
+              textAnchor="middle"
+              fontSize={8}
+              fill="var(--muted-text)"
+            >
+              HBase, ZooKeeper, etcd
+            </text>
           </motion.g>
         )}
         {apActive && (
@@ -357,8 +372,25 @@ export function CapTriangleDiagram() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            <text x={cx} y={192} textAnchor="middle" fontSize={10} fill="#2a5a8a" fontWeight={600}>AP</text>
-            <text x={cx} y={207} textAnchor="middle" fontSize={8} fill="var(--muted-text)">Cassandra, DynamoDB, CouchDB</text>
+            <text
+              x={cx}
+              y={192}
+              textAnchor="middle"
+              fontSize={10}
+              fill="#2a5a8a"
+              fontWeight={600}
+            >
+              AP
+            </text>
+            <text
+              x={cx}
+              y={207}
+              textAnchor="middle"
+              fontSize={8}
+              fill="var(--muted-text)"
+            >
+              Cassandra, DynamoDB, CouchDB
+            </text>
           </motion.g>
         )}
         {caActive && (
@@ -367,8 +399,25 @@ export function CapTriangleDiagram() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            <text x={305} y={90} textAnchor="middle" fontSize={10} fill="#8a6a2a" fontWeight={600}>CA</text>
-            <text x={305} y={105} textAnchor="middle" fontSize={8} fill="var(--muted-text)">Single-node RDBMS (no network)</text>
+            <text
+              x={305}
+              y={90}
+              textAnchor="middle"
+              fontSize={10}
+              fill="#8a6a2a"
+              fontWeight={600}
+            >
+              CA
+            </text>
+            <text
+              x={305}
+              y={105}
+              textAnchor="middle"
+              fontSize={8}
+              fill="var(--muted-text)"
+            >
+              Single-node RDBMS (no network)
+            </text>
           </motion.g>
         )}
 
@@ -435,19 +484,39 @@ export function CapTriangleDiagram() {
         <Node x={n3.x} y={n3.y} label="Node C" color={C.node} />
 
         {step === 4 && (
-          <Pkt from={[n1.x, n1.y]} to={[n2.x, n2.y]} color="#2ecc71" dur={0.6} />
+          <Pkt
+            from={[n1.x, n1.y]}
+            to={[n2.x, n2.y]}
+            color="#2ecc71"
+            dur={0.6}
+          />
         )}
         {step === 5 && (
-          <Pkt from={[n2.x, n2.y]} to={[n3.x, n3.y]} color="#2ecc71" dur={0.6} />
+          <Pkt
+            from={[n2.x, n2.y]}
+            to={[n3.x, n3.y]}
+            color="#2ecc71"
+            dur={0.6}
+          />
         )}
         {step === 7 && (
           <>
-            <Pkt from={[n1.x, n1.y]} to={[splitX - 5, n1.y]} color="#e74c3c" dur={0.5} />
+            <Pkt
+              from={[n1.x, n1.y]}
+              to={[splitX - 5, n1.y]}
+              color="#e74c3c"
+              dur={0.5}
+            />
             <Badge x={splitX} y={248} text="✕" color="#e74c3c" />
           </>
         )}
         {step === 8 && (
-          <Pkt from={[n2.x, n2.y]} to={[n3.x, n3.y]} color="#2ecc71" dur={0.6} />
+          <Pkt
+            from={[n2.x, n2.y]}
+            to={[n3.x, n3.y]}
+            color="#2ecc71"
+            dur={0.6}
+          />
         )}
       </svg>
       <Timeline
@@ -560,9 +629,23 @@ export function CpVsApDiagram() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            <rect x={20} y={120} width={180} height={36} rx={6}
-              fill={C.down.bg} stroke={C.down.border} strokeWidth={1} />
-            <text x={110} y={142} textAnchor="middle" fontSize={9} fill="var(--muted-text)">
+            <rect
+              x={20}
+              y={120}
+              width={180}
+              height={36}
+              rx={6}
+              fill={C.down.bg}
+              stroke={C.down.border}
+              strokeWidth={1}
+            />
+            <text
+              x={110}
+              y={142}
+              textAnchor="middle"
+              fontSize={9}
+              fill="var(--muted-text)"
+            >
               Refuses stale reads
             </text>
           </motion.g>
@@ -573,9 +656,23 @@ export function CpVsApDiagram() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            <rect x={240} y={120} width={180} height={36} rx={6}
-              fill={C.leader.bg} stroke={C.leader.border} strokeWidth={1} />
-            <text x={330} y={142} textAnchor="middle" fontSize={9} fill="var(--muted-text)">
+            <rect
+              x={240}
+              y={120}
+              width={180}
+              height={36}
+              rx={6}
+              fill={C.leader.bg}
+              stroke={C.leader.border}
+              strokeWidth={1}
+            />
+            <text
+              x={330}
+              y={142}
+              textAnchor="middle"
+              fontSize={9}
+              fill="var(--muted-text)"
+            >
               Serves data, may be stale
             </text>
           </motion.g>
@@ -598,13 +695,24 @@ export function CpVsApDiagram() {
 
 // Diagram 4: Raft Leader Election
 export function RaftElectionDiagram() {
-  const { step } = useCycle(8, 1100);
+  const { step, setStep, paused, setPaused } = useCycle(8, 1400);
+
+  const stepLabels = [
+    "A is the current leader",
+    "Leader A goes down",
+    "B starts election (increments term)",
+    "B requests votes from C, D, E",
+    "Nodes vote for B",
+    "B wins majority (3/4 votes)",
+    "B becomes the new leader",
+    "B begins replicating to followers",
+  ];
 
   const nodes = [
-    { x: 80, y: 90, label: "A" },
-    { x: 180, y: 90, label: "B" },
-    { x: 280, y: 90, label: "C" },
-    { x: 380, y: 90, label: "D" },
+    { x: 80, y: 115, label: "A" },
+    { x: 180, y: 115, label: "B" },
+    { x: 280, y: 115, label: "C" },
+    { x: 380, y: 115, label: "D" },
     { x: 230, y: 40, label: "E" },
   ];
 
@@ -613,233 +721,245 @@ export function RaftElectionDiagram() {
   const bIsLeader = step >= 6;
 
   return (
-    <svg className="w-full" viewBox="0 0 440 170">
-      {/* Connections between nodes */}
-      {nodes.map((n, i) =>
-        nodes.slice(i + 1).map((m, j) => (
-          <Conn
-            key={`${i}-${j}`}
-            x1={n.x}
-            y1={n.y}
-            x2={m.x}
-            y2={m.y}
-            dashed
-            opacity={0.15}
-          />
-        )),
-      )}
+    <div>
+      <svg className="w-full" viewBox="0 0 470 195">
+        {/* Connections between nodes */}
+        {nodes.map((n, i) =>
+          nodes
+            .slice(i + 1)
+            .map((m, j) => (
+              <Conn
+                key={`${i}-${j}`}
+                x1={n.x}
+                y1={n.y}
+                x2={m.x}
+                y2={m.y}
+                dashed
+                opacity={0.15}
+              />
+            )),
+        )}
 
-      {/* Nodes */}
-      {nodes.map((n, i) => {
-        let color = C.node;
-        let hl: string | undefined;
-        if (i === 0 && !leaderDead) {
-          color = C.leader; // A is leader
-        }
-        if (i === 0 && leaderDead) {
-          color = C.down;
-          hl = "rgba(138, 42, 42, 0.2)";
-        }
-        if (i === 1 && candidateB) {
-          color = { bg: "rgba(138, 138, 42, 0.12)", border: "#8a8a2a" }; // yellow candidate
-        }
-        if (i === 1 && bIsLeader) {
-          color = C.leader; // B becomes leader
-        }
-        return (
-          <Node
-            key={i}
-            x={n.x}
-            y={n.y}
-            label={n.label}
-            color={color}
-            highlight={hl}
-          />
-        );
-      })}
+        {/* Nodes */}
+        {nodes.map((n, i) => {
+          let color = C.node;
+          let hl: string | undefined;
+          if (i === 0 && !leaderDead) {
+            color = C.leader; // A is leader
+          }
+          if (i === 0 && leaderDead) {
+            color = C.down;
+            hl = "rgba(138, 42, 42, 0.2)";
+          }
+          if (i === 1 && candidateB) {
+            color = { bg: "rgba(138, 138, 42, 0.12)", border: "#8a8a2a" }; // yellow candidate
+          }
+          if (i === 1 && bIsLeader) {
+            color = C.leader; // B becomes leader
+          }
+          return (
+            <Node
+              key={i}
+              x={n.x}
+              y={n.y}
+              label={n.label}
+              color={color}
+              highlight={hl}
+            />
+          );
+        })}
 
-      {/* Leader badge */}
-      {!leaderDead && (
-        <Badge x={80} y={58} text="Leader" color="#2ecc71" />
-      )}
-      {leaderDead && step <= 5 && (
-        <Badge x={80} y={58} text="Down" color="#e74c3c" />
-      )}
-      {bIsLeader && <Badge x={180} y={58} text="Leader" color="#2ecc71" />}
+        {/* Leader badge */}
+        {!leaderDead && <Badge x={80} y={83} text="Leader" color="#2ecc71" />}
+        {leaderDead && step <= 5 && (
+          <Badge x={80} y={83} text="Down" color="#e74c3c" />
+        )}
+        {bIsLeader && <Badge x={180} y={83} text="Leader" color="#2ecc71" />}
 
-      {/* Candidate badge */}
-      {candidateB && step < 6 && (
-        <Badge x={180} y={58} text="Candidate" color="#e6c53a" />
-      )}
+        {/* Candidate badge */}
+        {candidateB && step < 6 && (
+          <Badge x={180} y={83} text="Candidate" color="#e6c53a" />
+        )}
 
-      {/* Vote request packets */}
-      {step === 3 &&
-        [2, 3, 4].map((i) => (
-          <Pkt
-            key={`vote-${i}`}
-            from={[180, 90]}
-            to={[nodes[i].x, nodes[i].y]}
-            color="#e6c53a"
-            dur={0.6}
-          />
-        ))}
+        {/* Vote request packets */}
+        {step === 3 &&
+          [2, 3, 4].map((i) => (
+            <Pkt
+              key={`vote-${i}`}
+              from={[180, 115]}
+              to={[nodes[i].x, nodes[i].y]}
+              color="#e6c53a"
+              dur={0.6}
+            />
+          ))}
 
-      {/* Vote responses */}
-      {step === 4 &&
-        [2, 3, 4].map((i) => (
-          <Pkt
-            key={`ack-${i}`}
-            from={[nodes[i].x, nodes[i].y]}
-            to={[180, 90]}
-            color="#2ecc71"
-            dur={0.6}
-          />
-        ))}
+        {/* Vote responses */}
+        {step === 4 &&
+          [2, 3, 4].map((i) => (
+            <Pkt
+              key={`ack-${i}`}
+              from={[nodes[i].x, nodes[i].y]}
+              to={[180, 115]}
+              color="#2ecc71"
+              dur={0.6}
+            />
+          ))}
 
-      {step === 5 && <Badge x={230} y={140} text="Majority reached" color="#2ecc71" />}
+        {step === 5 && (
+          <Badge x={230} y={165} text="Majority reached" color="#2ecc71" />
+        )}
 
-      {/* New leader replicating */}
-      {step === 7 &&
-        [2, 3, 4].map((i) => (
-          <Pkt
-            key={`rep-${i}`}
-            from={[180, 90]}
-            to={[nodes[i].x, nodes[i].y]}
-            color="#2ecc71"
-            dur={0.7}
-          />
-        ))}
-
-      <text
-        x={220}
-        y={162}
-        textAnchor="middle"
-        fontSize={10}
-        fill="var(--muted-text)"
-      >
-        {
-          [
-            "A is the current leader",
-            "Leader A goes down",
-            "B starts election (increments term)",
-            "B requests votes from C, D, E",
-            "Nodes vote for B",
-            "B wins majority (3/4 votes)",
-            "B becomes the new leader",
-            "B begins replicating to followers",
-          ][step]
-        }
-      </text>
-    </svg>
+        {/* New leader replicating */}
+        {step === 7 &&
+          [2, 3, 4].map((i) => (
+            <Pkt
+              key={`rep-${i}`}
+              from={[180, 115]}
+              to={[nodes[i].x, nodes[i].y]}
+              color="#2ecc71"
+              dur={0.7}
+            />
+          ))}
+      </svg>
+      <Timeline
+        step={step}
+        total={10}
+        labels={stepLabels}
+        paused={paused}
+        onToggle={() => setPaused((p) => !p)}
+        onStepClick={(i) => {
+          setStep(i);
+          setPaused(true);
+        }}
+      />
+    </div>
   );
 }
 
 // Diagram 5: Raft Log Replication
 export function RaftReplicationDiagram() {
-  const { step } = useCycle(6, 1200);
+  const { step, setStep, paused, setPaused } = useCycle(6, 1300);
 
-  const leader = { x: 120, y: 50 };
-  const followers = [
-    { x: 300, y: 30, label: "Follower 1" },
-    { x: 300, y: 80, label: "Follower 2" },
-    { x: 300, y: 130, label: "Follower 3" },
+  const stepLabels = [
+    "1. Client sends write to leader",
+    "2. Leader appends to its log",
+    "3. Leader replicates entry to followers",
+    "4. Followers acknowledge",
+    "5. Majority confirmed → committed",
+    "6. Leader responds to client",
   ];
-  const client = { x: 30, y: 50 };
+
+  const leader = { x: 160, y: 80 };
+  const followers = [
+    { x: 330, y: 30, label: "Follower 1" },
+    { x: 330, y: 80, label: "Follower 2" },
+    { x: 330, y: 130, label: "Follower 3" },
+  ];
+  const client = { x: 60, y: 80 };
 
   return (
-    <svg className="w-full" viewBox="0 0 440 170">
-      {/* Connections */}
-      <Conn x1={client.x + 28} y1={client.y} x2={leader.x - 28} y2={leader.y} />
-      {followers.map((f, i) => (
+    <div>
+      <svg className="w-full" viewBox="0 0 400 170">
+        {/* Connections */}
         <Conn
-          key={i}
-          x1={leader.x + 28}
-          y1={leader.y}
-          x2={f.x - 28}
-          y2={f.y}
+          x1={client.x + 28}
+          y1={client.y}
+          x2={leader.x - 28}
+          y2={leader.y}
         />
-      ))}
-
-      {/* Client */}
-      <Node x={client.x} y={client.y} label="Client" color={C.client} />
-
-      {/* Leader */}
-      <Node x={leader.x} y={leader.y} label="Leader" color={C.leader} />
-      <Badge x={120} y={18} text="Term 3" color="#2a8a5a" />
-
-      {/* Followers */}
-      {followers.map((f, i) => (
-        <Node key={i} x={f.x} y={f.y} label={f.label} color={C.node} />
-      ))}
-
-      {/* 1. Client writes to leader */}
-      {step === 0 && (
-        <Pkt from={[client.x, client.y]} to={[leader.x, leader.y]} color="#e67e22" dur={0.6} />
-      )}
-
-      {/* 2. Leader appends to local log */}
-      {step === 1 && (
-        <Badge x={120} y={90} text="Append to log" color="#e67e22" />
-      )}
-
-      {/* 3. Leader replicates to followers */}
-      {step === 2 &&
-        followers.map((f, i) => (
-          <Pkt
-            key={`rep-${i}`}
-            from={[leader.x, leader.y]}
-            to={[f.x, f.y]}
-            color="#3498db"
-            dur={0.7}
+        {followers.map((f, i) => (
+          <Conn
+            key={i}
+            x1={leader.x + 28}
+            y1={leader.y}
+            x2={f.x - 28}
+            y2={f.y}
           />
         ))}
 
-      {/* 4. Followers acknowledge */}
-      {step === 3 &&
-        followers.map((f, i) => (
+        {/* Client */}
+        <Node x={client.x} y={client.y} label="Client" color={C.client} />
+
+        {/* Leader */}
+        <Node x={leader.x} y={leader.y} label="Leader" color={C.leader} />
+        <Badge x={160} y={48} text="Term 3" color="#2a8a5a" />
+
+        {/* Followers */}
+        {followers.map((f, i) => (
+          <Node key={i} x={f.x} y={f.y} label={f.label} color={C.node} />
+        ))}
+
+        {/* 1. Client writes to leader */}
+        {step === 0 && (
           <Pkt
-            key={`ack-${i}`}
-            from={[f.x, f.y]}
+            from={[client.x, client.y]}
             to={[leader.x, leader.y]}
+            color="#e67e22"
+            dur={0.6}
+          />
+        )}
+
+        {/* 2. Leader appends to local log */}
+        {step === 1 && (
+          <Badge x={110} y={130} text="Append to log" color="#e67e22" />
+        )}
+
+        {/* 3. Leader replicates to followers */}
+        {step === 2 &&
+          followers.map((f, i) => (
+            <Pkt
+              key={`rep-${i}`}
+              from={[leader.x, leader.y]}
+              to={[f.x, f.y]}
+              color="#3498db"
+              dur={0.7}
+            />
+          ))}
+
+        {/* 4. Followers acknowledge */}
+        {step === 3 &&
+          followers.map((f, i) => (
+            <Pkt
+              key={`ack-${i}`}
+              from={[f.x, f.y]}
+              to={[leader.x, leader.y]}
+              color="#2ecc71"
+              dur={0.6}
+            />
+          ))}
+
+        {/* 5. Majority ack → commit */}
+        {step === 4 && (
+          <Badge
+            x={210}
+            y={165}
+            text="Majority ACK → entry committed"
+            color="#2ecc71"
+          />
+        )}
+
+        {/* 6. Leader responds to client */}
+        {step === 5 && (
+          <Pkt
+            from={[leader.x, leader.y]}
+            to={[client.x, client.y]}
             color="#2ecc71"
             dur={0.6}
           />
-        ))}
-
-      {/* 5. Majority ack → commit */}
-      {step === 4 && (
-        <Badge x={220} y={155} text="Majority ACK → entry committed" color="#2ecc71" />
-      )}
-
-      {/* 6. Leader responds to client */}
-      {step === 5 && (
-        <Pkt
-          from={[leader.x, leader.y]}
-          to={[client.x, client.y]}
-          color="#2ecc71"
-          dur={0.6}
-        />
-      )}
-
-      <text
-        x={220}
-        y={165}
-        textAnchor="middle"
-        fontSize={10}
-        fill="var(--muted-text)"
-      >
-        {
-          [
-            "1. Client sends write to leader",
-            "2. Leader appends to its log",
-            "3. Leader replicates entry to followers",
-            "4. Followers acknowledge",
-            "5. Majority confirmed → committed",
-            "6. Leader responds to client",
-          ][step]
-        }
-      </text>
-    </svg>
+        )}
+      </svg>
+      <Timeline
+        step={step}
+        total={10}
+        labels={stepLabels}
+        paused={paused}
+        onToggle={() => setPaused((p) => !p)}
+        onStepClick={(i) => {
+          setStep(i);
+          setPaused(true);
+        }}
+      />
+    </div>
   );
 }
 
