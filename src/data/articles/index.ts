@@ -4,7 +4,7 @@ import { systemDesignArticles } from "./system-design";
 import { cloudInfraArticles } from "./cloud-infrastructure";
 import { backendArticles } from "./backend";
 import { databaseArticles } from "./database";
-import { leetcodeArticles } from "./leetcode";
+import { leetcodeArticles } from "../leetcode/leetcode";
 import { Article } from "./types";
 
 export const articles: Article[] = [

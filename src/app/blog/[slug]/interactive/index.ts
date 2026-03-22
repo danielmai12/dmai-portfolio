@@ -20,6 +20,9 @@ const interactiveComponents: Record<string, ComponentType> = {
   "cap-theorem-distributed-consensus": dynamic(
     () => import("./cap-theorem/CapInteractive"),
   ),
+  "longest-substring-without-repeating-characters": dynamic(
+    () => import("./sliding-window/SlidingWindowInteractive"),
+  ),
 };
 
 export function getInteractiveComponent(

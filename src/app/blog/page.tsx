@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { articles, categories, type Category } from "@/data/articles";
+import { articles, categories, CATEGORY, type Category } from "@/data/articles";
 import { useBlogPrefix } from "@/hooks/useBlogPath";
+import LeetcodeSection from "@/components/blog/LeetcodeSection";
 
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("System Design");
@@ -139,7 +140,9 @@ const BlogPage = () => {
 
         {/* Article list */}
         <div className="flex-1 overflow-y-auto min-h-0 pr-1">
-          {filtered.length === 0 ? (
+          {!query && activeCategory === CATEGORY.LEETCODE ? (
+            <LeetcodeSection />
+          ) : filtered.length === 0 ? (
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
