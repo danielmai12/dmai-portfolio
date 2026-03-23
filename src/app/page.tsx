@@ -50,7 +50,18 @@ const Home = () => {
                 Outside of work, I keep up with the AI space by building
                 personal projects around LLMs, RAG pipelines, and AI-powered
                 tooling - exploring how these systems can be designed and
-                integrated into real products.
+                integrated into real products. I also{" "}
+                <a
+                  href="https://blog.codewithdmai.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                  style={{ color: "var(--accent-color)" }}
+                >
+                  write about
+                </a>
+                {" "}systems design, distributed systems, and things I learn
+                along the way.
               </p>
             </div>
             <div className="flex flex-col xl:flex-row items-center justify-start gap-8">
@@ -65,6 +76,19 @@ const Home = () => {
                   className="uppercase flex items-center gap-2"
                 >
                   <span>View Resume</span>
+                </Button>
+              </a>
+              <a
+                href="https://blog.codewithdmai.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="uppercase flex items-center gap-2"
+                >
+                  <span>Read Blog</span>
                 </Button>
               </a>
               <div className="mb-8 xl:mb-0">
