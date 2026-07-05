@@ -3,10 +3,37 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const topics = ["All", "ML & AI", "Web", "DevOps"] as const;
+const topics = ["All", "ML & AI", "Web", "DevOps", "Startup"] as const;
 type Topic = (typeof topics)[number];
 
 const projects = [
+  {
+    name: "WealthPilot",
+    period: "2025 - Present",
+    description:
+      "Solo startup building a Canadian personal finance platform. Tracks expenses, manages investment portfolios (TFSA/RRSP/FHSA), handles debts, and provides AI-powered financial guidance via a Claude-based copilot, all while staying compliant with Canadian securities regulations.",
+    tech: [
+      "Next.js 15",
+      "React 19",
+      "Python",
+      "Flask",
+      "GCP Cloud Functions",
+      "Firestore",
+      "Terraform",
+      "Claude API",
+    ],
+    topic: "Startup" as Topic,
+    github: "https://github.com/danielmai12",
+  },
+  {
+    name: "Code with DMai",
+    period: "2025 - Present",
+    description:
+      "Personal technical blog where I share what I learn about systems design, distributed systems, and software engineering for free. Built as a separate Next.js app with a custom content pipeline.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "MDX"],
+    topic: "Web" as Topic,
+    url: "https://blog.codewithdmai.com",
+  },
   {
     name: "CGC Grain Outcome Predictions",
     period: "May 2023 - Aug 2023",
@@ -110,7 +137,7 @@ const ProjectsPage = () => {
           {filtered.map((project, i) => (
             <motion.a
               key={i}
-              href={project.github}
+              href={project.github || project.url}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 16 }}

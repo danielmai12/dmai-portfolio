@@ -3,117 +3,153 @@
 import { motion } from "framer-motion";
 
 // Wrap text in **...** to bold inline — used for metrics, impact numbers, and key tech names
-const experiences = [
+
+type SkillGroup = {
+  area: string;
+  items: string[];
+};
+
+type Experience = {
+  company: string;
+  url?: string;
+  roles: { title: string; period: string }[];
+  location?: string;
+  narrative: string;
+  skills?: SkillGroup[];
+  bullets?: string[];
+};
+
+const experiences: Experience[] = [
   {
     company: "GrydPark",
     url: "https://parkwithgryd.com/",
-    role: "Software Engineer",
-    periods: ["July 2024 - Present"],
+    roles: [{ title: "Software Engineer", period: "July 2024 - Present" }],
     location: "Winnipeg, Canada",
-    intro: null,
-    bullets: [
-      "Led a full rebuild of the core B2B/B2C platform — scaled traffic **~4x** and reduced deployment time by **50%** migrating from a fragmented microservices setup to a containerized monolith using **NestJS**, **React Native**, **PostgreSQL**, and **GCP**.",
-      "Owned end-to-end system design for booking, payments, and accounting — event-driven services processing **Stripe** webhooks integrated with **QuickBooks** for automated billing, handling **$200K+** in monthly volume.",
-      "Built secure auth in **NestJS** with custom permission policies and **Firebase Auth** for phone-based guest checkout.",
-      "Designed and built **Secure Park**, an IoT access control system integrating **ButterflyMX** APIs for secure parking via mobile app and keypad entry.",
-      "Established cloud infrastructure using **Terraform**, **Docker**, and **Kubernetes** with CI/CD pipelines on **GCP**.",
-      "Reduced query latency through indexing and optimization, improving application performance by **~3×** and stabilizing production under load.",
-    ],
-    tech: [
-      "NestJS",
-      "React",
-      "React Native",
-      "PostgreSQL",
-      "GCP",
-      "Stripe",
-      "QuickBooks",
-      "Firebase",
-      "Terraform",
-      "Docker",
-      "Kubernetes",
+    narrative:
+      "Joined as one of the first engineers in-house to rebuild GrydPark's parking platform from the ground up. What's been roughly **2 years** has felt closer to **4** — consistently putting in long days to own the full stack end-to-end across **7 repositories** and **1000+ commits**. Led a migration from a fragmented microservices setup to a containerized monolith, scaling traffic **~4x** and cutting deployment time by **50%**. Sole owner of the API, web portal, mobile app, guest checkout, enforcement app, and cloud infrastructure.",
+    skills: [
+      {
+        area: "Platform & Architecture",
+        items: [
+          "Built the core **NestJS** API — a full-featured parking management platform with **TypeScript** and **PostgreSQL**, supporting hourly and monthly bookings with overlap prevention.",
+          "Developed the web portal in **React** with **Shadcn/Radix** components — booking calendar with multi-day support, zone-based spot grouping, and property management with **Google Maps** integration.",
+          "Extracted a standalone guest checkout SPA with a complete flow: duration picker → user details → payment → confirmation, plus booking extension for returning guests.",
+        ],
+      },
+      {
+        area: "Mobile App — React Native",
+        items: [
+          "Owner of the **React Native** mobile app shipped to both **iOS** and **Android** — managed the full release lifecycle",
+          "Rebuilt the entire authentication system from scratch — mobile sign-in, OTP verification, third-party auth (**Apple/Google**), profile creation, and edge case handling.",
+          "Owned the full booking and checkout flow — review screen, hourly rate integration, extend/modify booking, dynamic reservation details, in-checkout editing, and **$0 booking** support.",
+          "Implemented **Secure Park / Gated Access** end-to-end in mobile — access points list, gated modal flow, and gain access screen.",
+          "Performance-optimized the Explore screen by reducing unnecessary re-renders and refactored core screens (**SpotDetails**, **Receipts**, **Confirmation**, **Vehicle**) for better architecture.",
+          "Shipped cross-platform bug fixes — resolved **Android**-specific crashes, CSS issues, and **iOS** sign-in problems.",
+        ],
+      },
+      {
+        area: "Payments & Billing",
+        items: [
+          "Owned end-to-end payment infrastructure processing **$200K+/month** — **Stripe** integration with transaction tracking, refunds, receipt generation, and **Stripe Terminal** for in-person card payments.",
+          "Built **QuickBooks Online** accounting integration for automated journal entries, bill management, and reconciliation.",
+          "Handled GST/tax calculations per state with currency and timezone-aware payment recording.",
+        ],
+      },
+      {
+        area: "Auth & Security",
+        items: [
+          "Implemented **Firebase Auth** with multi-provider support (Google, Apple) and phone-based OTP guest checkout via **Twilio**.",
+          "Built role-based access control spanning Gryd Admin, Company Admin, Property Manager, and Lot Attendant roles.",
+          "Added **QR code generation** for bookings with anti-scam unique identifiers.",
+        ],
+      },
+      {
+        area: "IoT — Secure Park",
+        items: [
+          "Designed and built **Secure Park**, an access control system integrating **ButterflyMX** APIs for secure parking via mobile app and keypad entry.",
+          "Built access point management — operators can open gates remotely and resend PINs to parkers.",
+          "Implemented pincode generation and key code auth for automated entry.",
+        ],
+      },
+      {
+        area: "Infrastructure & DevOps",
+        items: [
+          "Architected **Terraform** IaC with **8 reusable modules** across dev/staging/prod environments.",
+          "Provisioned **GKE Autopilot** clusters with advanced networking, managed Prometheus, and workload identity.",
+          "Set up **Cloud SQL PostgreSQL** with automated backups, point-in-time recovery, and SSL enforcement.",
+          "Built **Cloud CDN + GCS** infrastructure for static site hosting and **Artifact Registry** for Docker image management.",
+          "Created **Cloud Build** CI/CD pipelines with intelligent plan detection and conditional applies.",
+          "Migrated Kubernetes config from manual manifests to **Kustomize** overlays with environment-specific patches.",
+        ],
+      },
+      {
+        area: "Performance & Observability",
+        items: [
+          "Reduced query latency **~3x** through indexing, pagination, and query optimization — stabilizing production under load.",
+          "Diagnosed and fixed **N+1 query** problems and replaced expensive joins between large tables with **CTEs** to extract only the needed boundary rows, avoiding full cross-table scans.",
+          "Discovered the **nestjs-paginate** offset-based pagination was silently running a full unfiltered count query on every request — migrated to **cursor-based pagination** to eliminate the bottleneck.",
+          "Added live booking **data polling** (15-second auto-refresh) in the enforcement app for real-time parker visibility.",
+        ],
+      },
     ],
   },
   {
     company: "Wawanesa Insurance",
     url: "https://www.wawanesa.com/",
-    role: "Application Developer I",
-    periods: ["Feb 2024 - June 2024"],
+    roles: [
+      { title: "Application Developer I", period: "Feb 2024 - June 2024" },
+      {
+        title: "Application Developer I — Co-op",
+        period: "May 2022 - May 2023",
+      },
+    ],
     location: "Winnipeg, Canada",
-    intro: null,
+    narrative:
+      "Returned to Wawanesa after my co-op to take on a full-time role on the same **Guidewire Cloud PolicyCenter** team. Across both stints, I shipped insurance product features, mentored developers, and drove performance improvements.",
     bullets: [
-      "Built and maintained **Guidewire Cloud PolicyCenter** features using **Gosu**, **Java**, and **PostgreSQL** — with unit tests (**JUnit**) and delivery automation (**Jenkins**).",
+      "Built and maintained **PolicyCenter** features using **Gosu**, **Java**, and **PostgreSQL** — with **JUnit**-based unit tests and **Jenkins** delivery automation.",
       "Shipped policy renewal and endorsement features for personal property and seasonal insurance products, with focus on rate capping business logic.",
+      "Reworked **Seasonal** risk features end-to-end for broker usage and updated **Homeowner** risk types across jurisdictions.",
       "Diagnosed and corrected performance anti-patterns across the quoting pipeline, reducing quoting time by **~80%**.",
+      "Onboarded and mentored new developers on application setup, coding standards, and **Git** workflows.",
       "Improved developer tooling and release flow across teams.",
     ],
-    tech: ["Gosu", "Java", "PostgreSQL", "Jenkins", "Guidewire Cloud", "JUnit"],
   },
   {
     company: "QDoc",
     url: "https://qdoc.ca/",
-    role: "Software Developer (Full-Time Contract)",
-    periods: ["Sept 2023 - Feb 2024"],
-    location: "Winnipeg, Canada",
-    intro:
-      "Built and shipped features for a telehealth and healthcare billing platform.",
-    bullets: [
-      "Owned infrastructure for a billing application using **AWS CDK** with **React** and **Mantine UI** — implemented **Cognito**-based auth and RBAC, boosting team delivery capacity by **~15%** per sprint.",
-      "Designed and provisioned the full **VPC** architecture — deployed a private **RDS** instance and established a secure **EC2** bastion host as the sole ingress point for database access.",
+    roles: [
+      {
+        title: "Software Developer — Full-Time Contract",
+        period: "Sept 2023 - Feb 2024",
+      },
+      { title: "Software Developer — Intern", period: "May 2023 - Sept 2023" },
     ],
-    tech: ["AWS CDK", "Lambda", "Cognito", "React", "Mantine", "PostgreSQL"],
-  },
-  {
-    company: "QDoc",
-    url: "https://qdoc.ca/",
-    role: "Software Developer (Intern)",
-    periods: ["May 2023 - Sept 2023"],
     location: "Winnipeg, Canada",
-    intro:
-      "Built and shipped features for a telehealth and healthcare billing platform.",
+    narrative:
+      "Started as an intern building core telehealth features, then was brought back on contract to own infrastructure and ship a billing platform. Went from building UI to designing VPC architecture in under a year.",
     bullets: [
-      "Built a telehealth platform serving **~3,000 consultations/month**, replacing paper-based workflows with a **React**/AWS-serverless backend (**Lambda**, **DynamoDB**, **GraphQL**).",
+      "Built a telehealth platform serving **~3,000 consultations/month**, replacing paper-based workflows with **React** and an AWS-serverless backend (**Lambda**, **DynamoDB**, **GraphQL**).",
       "Designed an admin metrics and reporting system aggregating data across **1M+** annual patient encounters and billing records.",
       "Implemented event-driven automation using **AWS Lambda** and **Twilio SMS** to improve appointment attendance.",
-      "Built a physician-to-physician referral and appointment booking service — streamlined the consultation workflow end-to-end, contributing to a **5%** growth in active users.",
+      "Built a physician-to-physician referral and appointment booking service, contributing to **5%** growth in active users.",
+      "Owned infrastructure for the billing app using **AWS CDK** — implemented **Cognito**-based auth and RBAC, boosting team delivery capacity by **~15%** per sprint.",
+      "Designed and provisioned the full **VPC** architecture — private **RDS** instance with a secure **EC2** bastion host as the sole ingress point.",
     ],
-    tech: [
-      "Lambda",
-      "DynamoDB",
-      "GraphQL",
-      "Cognito",
-      "React",
-      "Material UI",
-      "Twilio",
-    ],
-  },
-  {
-    company: "Wawanesa Insurance Company",
-    url: "https://www.wawanesa.com/",
-    role: "Application Developer I - Coop",
-    periods: ["May 2022 - May 2023"],
-    intro: "Worked on Guidewire Insurance cloud project",
-    bullets: [
-      "Developed **Guidewire Cloud PolicyCenter** features using **Gosu** and **Java** for application logic, **PostgreSQL** for database, and **GUnit** (**JUnit**-based) for unit testing and automation.",
-      "Updated features across backend, frontend, and ratebook for **Homeowner** risk types across jurisdictions, and reworked **Seasonal** risk features end-to-end for broker usage.",
-      "Made numerous enhancements and bug fixes to meet product requirements.",
-      "Onboarded and mentored new developers on application setup, coding standards, and **Git** workflows.",
-    ],
-    tech: ["Gosu", "Java", "PostgreSQL", "Jenkins", "Guidewire Cloud", "JUnit"],
   },
   {
     company: "University of Manitoba",
     url: "https://umanitoba.ca/",
-    role: "Research Assistant",
-    periods: ["May 2021 - Sept 2021"],
+    roles: [{ title: "Research Assistant", period: "May 2021 - Sept 2021" }],
     location: "Winnipeg, Canada",
-    intro: "Worked on machine learning and data analytics.",
+    narrative:
+      "My first technical role — applied machine learning to real-world logistics and healthcare problems, and competed in my first data science challenge.",
     bullets: [
       "Won **1st place** in the **Nexus Data Science Challenge**.",
       "Built freight balancing models using **LSTM** and greedy algorithms.",
       "Developed deep learning models for COVID-19 hospitalization prediction using **autoencoder** and **few-shot learning** techniques.",
       "Analyzed large-scale COVID-19 datasets with **Python**, **TensorFlow**, **Pandas**, and **NumPy**.",
     ],
-    tech: ["Python", "TensorFlow", "Pandas", "NumPy", "Matplotlib"],
   },
 ];
 
@@ -130,6 +166,32 @@ function renderBullet(text: string) {
     ) : (
       part
     ),
+  );
+}
+
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="mb-3 list-none p-0">
+      {items.map((b, j) => (
+        <li
+          key={j}
+          className="relative text-sm mb-1 pl-4 leading-relaxed font-light"
+          style={{ color: "var(--text-color)" }}
+        >
+          <span
+            className="absolute left-0 rounded-full inline-block"
+            style={{
+              top: "0.65em",
+              width: "3px",
+              height: "3px",
+              backgroundColor: "var(--muted-text)",
+              opacity: 0.4,
+            }}
+          />
+          {renderBullet(b)}
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -171,7 +233,7 @@ const WorkPage = () => {
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
-              className="relative mb-10"
+              className="relative mb-14"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -190,13 +252,11 @@ const WorkPage = () => {
                 }}
               />
 
-              {/* Role @ Company */}
+              {/* Company name */}
               <h3
-                className="text-base font-medium mb-1"
+                className="text-lg font-medium mb-1"
                 style={{ letterSpacing: "-0.01em" }}
               >
-                <span style={{ color: "var(--text-color)" }}>{exp.role}</span>
-                <span style={{ color: "var(--muted-text)" }}> @ </span>
                 {exp.url ? (
                   <a
                     href={exp.url}
@@ -214,84 +274,67 @@ const WorkPage = () => {
                 )}
               </h3>
 
-              {/* Dates + location */}
-              <div className="flex flex-wrap items-center gap-x-3 mb-3">
-                {exp.periods.map((p, j) => (
-                  <span
+              {/* Roles with dates */}
+              <div className="mb-3">
+                {exp.roles.map((role, j) => (
+                  <div
                     key={j}
-                    className="text-xs"
-                    style={{
-                      color: "var(--muted-text)",
-                      letterSpacing: "0.02em",
-                    }}
+                    className="flex flex-wrap items-center gap-x-3"
                   >
-                    {p}
-                  </span>
+                    <span
+                      className="text-sm font-medium"
+                      style={{ color: "var(--text-color)" }}
+                    >
+                      {role.title}
+                    </span>
+                    <span
+                      className="text-xs"
+                      style={{
+                        color: "var(--muted-text)",
+                        letterSpacing: "0.02em",
+                      }}
+                    >
+                      {role.period}
+                    </span>
+                  </div>
                 ))}
                 {exp.location && (
                   <span
                     className="text-xs"
                     style={{ color: "var(--muted-text)" }}
                   >
-                    · {exp.location}
+                    {exp.location}
                   </span>
                 )}
               </div>
 
-              {/* Intro */}
-              {exp.intro && (
-                <p
-                  className="text-sm font-light mb-2"
-                  style={{ color: "var(--text-color)" }}
-                >
-                  {exp.intro}
-                </p>
+              {/* Narrative */}
+              <p
+                className="text-sm font-light mb-4 leading-relaxed"
+                style={{ color: "var(--text-color)" }}
+              >
+                {renderBullet(exp.narrative)}
+              </p>
+
+              {/* Skill groups (GrydPark style) */}
+              {exp.skills && (
+                <div className="flex flex-col gap-4">
+                  {exp.skills.map((group, j) => (
+                    <div key={j}>
+                      <h4
+                        className="text-xs font-semibold uppercase tracking-wider mb-2"
+                        style={{ color: "var(--muted-text)" }}
+                      >
+                        {group.area}
+                      </h4>
+                      <BulletList items={group.items} />
+                    </div>
+                  ))}
+                </div>
               )}
 
-              {/* Bullets */}
-              <ul className="mb-3 list-none p-0">
-                {exp.bullets.map((b, j) => (
-                  <li
-                    key={j}
-                    className="relative text-sm mb-1 pl-4 leading-relaxed font-light"
-                    style={{ color: "var(--text-color)" }}
-                  >
-                    <span
-                      className="absolute left-0 rounded-full inline-block"
-                      style={{
-                        top: "0.65em",
-                        width: "3px",
-                        height: "3px",
-                        backgroundColor: "var(--muted-text)",
-                        opacity: 0.4,
-                      }}
-                    />
-                    {renderBullet(b)}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Tech */}
-              <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
-                {exp.tech.map((t, j) => (
-                  <span key={j} className="flex items-center gap-x-1.5">
-                    <span
-                      className="text-xs font-medium"
-                      style={{ color: "var(--muted-text)" }}
-                    >
-                      {t}
-                    </span>
-                    {j < exp.tech.length - 1 && (
-                      <span
-                        className="text-xs"
-                        style={{ color: "var(--muted-text)", opacity: 0.4 }}
-                      >
-                        ·
-                      </span>
-                    )}
-                  </span>
-                ))}
-              </div>
+              {/* Flat bullets (other experiences) */}
+              {exp.bullets && <BulletList items={exp.bullets} />}
             </motion.div>
           ))}
         </div>
