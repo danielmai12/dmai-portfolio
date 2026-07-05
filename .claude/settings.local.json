@@ -6,7 +6,8 @@
       "Bash(grep -n \"<section>\" /Users/danielmai/Documents/dmai/dmai-portfolio/src/app/blog/\\\\[slug\\\\]/interactive/system-design/CachingInteractive.tsx)",
       "Bash(npx tsc:*)",
       "Bash(npx tsc *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "WebSearch"
     ]
   }
 }
