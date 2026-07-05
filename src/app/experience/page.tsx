@@ -21,6 +21,21 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
+    company: "PolicyMe",
+    url: "https://www.policyme.com/",
+    roles: [{ title: "Software Engineer", period: "July 2026 - Present" }],
+    location: "Toronto, Canada",
+    narrative:
+      "Joining PolicyMe to work across their AI-powered insurance platform — full-stack on **Python**, **React/Redux**, **PostgreSQL**, and **AWS**, with a focus on integrating AI/ML (document processing, data extraction, recommendation engines) into production alongside their senior AI engineers. Carrying the same **plan → execute → validate** discipline into a stack built around **LangChain/LangGraph** and **n8n** — scoping features and data pipelines up front, shipping incrementally, and building in the observability to prove correctness in production rather than assume it.",
+    bullets: [
+      "Full-stack feature development across **Python**, **React/Redux**, **PostgreSQL**, and **AWS** for an AI-powered web application.",
+      "Integrating AI models and third-party APIs for document processing, data extraction, and recommendation engines, working closely with senior engineers to get them production-ready.",
+      "Building scalable, secure, and observable cloud architecture and data pipelines feeding AI model training and inference.",
+      "Contributing to architecture planning, code review, and release planning, with end-to-end feature ownership once ramped up.",
+      "Participating in company-wide engineering initiatives — quarterly planning, hackathons, engineering guilds, and AI tooling experiments.",
+    ],
+  },
+  {
     company: "GrydPark",
     url: "https://parkwithgryd.com/",
     roles: [{ title: "Software Engineer", period: "July 2024 - July 2026" }],

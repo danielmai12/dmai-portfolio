@@ -7,7 +7,13 @@
       "Bash(npx tsc:*)",
       "Bash(npx tsc *)",
       "Bash(npm run *)",
-      "WebSearch"
+      "WebSearch",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(ls .claude/skills)",
+      "Bash(grep -Hm1 '^description:' .claude/skills/*/SKILL.md)",
+      "Bash(npx playwright *)",
+      "Bash(node \"C:\\\\Users\\\\Maith\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--dmai-dmai-portfolio\\\\bdffa061-2b52-4d9f-9864-c8ebb7e86000\\\\scratchpad\\\\screenshot.js\")"
     ]
   }
 }

@@ -25,19 +25,18 @@ const Home = () => {
               <p>
                 Currently at{" "}
                 <a
-                  href="https://parkwithgryd.com/"
+                  href="https://www.policyme.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:underline"
                   style={{ color: "var(--accent-color)" }}
                 >
-                  GrydPark
+                  PolicyMe
                 </a>
-                , building full-stack B2B/B2C parking services across web and
-                mobile. I work across the whole stack - from React frontends to
-                NestJS APIs and PostgreSQL - with a deeper focus on backend
-                systems and cloud infrastructure on GCP using Terraform, Docker,
-                and Kubernetes.
+                , building full-stack AI-powered insurance products. I work
+                across the whole stack - React and Redux on the frontend, Python
+                and PostgreSQL on the backend - with a growing focus on
+                integrating AI/ML (LangChain/LangGraph) into production on AWS.
               </p>
               <p>
                 I studied Computer Science (BSc Honors) at the University of
@@ -59,10 +58,64 @@ const Home = () => {
                   style={{ color: "var(--accent-color)" }}
                 >
                   write about
-                </a>
-                {" "}systems design, distributed systems, and things I learn
-                along the way.
+                </a>{" "}
+                systems design, distributed systems, and things I learn along
+                the way.
               </p>
+              <p className="text-xs" style={{ color: "var(--muted-text)" }}>
+                Previously:{" "}
+                <a
+                  href="https://parkwithgryd.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                  style={{ color: "var(--accent-color)" }}
+                >
+                  GrydPark
+                </a>
+                ,{" "}
+                <a
+                  href="https://qdoc.ca/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                  style={{ color: "var(--accent-color)" }}
+                >
+                  QDoc
+                </a>
+                ,{" "}
+                <a
+                  href="https://www.wawanesa.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                  style={{ color: "var(--accent-color)" }}
+                >
+                  Wawanesa
+                </a>
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2 mb-9">
+              {[
+                "Python",
+                "TypeScript",
+                "React",
+                "React Native",
+                "GCP",
+                "AWS",
+                "LangChain",
+              ].map((tech) => (
+                <span
+                  key={tech}
+                  className="text-xs px-3 py-1 rounded-full"
+                  style={{
+                    border: "1px solid var(--border-color)",
+                    color: "var(--text-color)",
+                  }}
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
             <div className="flex flex-col xl:flex-row items-center justify-start gap-8">
               <a
